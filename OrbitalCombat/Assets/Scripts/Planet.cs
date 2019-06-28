@@ -5,11 +5,15 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Planet : MonoBehaviour {
     [SerializeField, Range(0, 10)]
-    private float coreRadius = 0;
+    public float coreRadius = 0;
     [SerializeField, Range(0, 10)]
-    private float atmosphereRadius = 0;
+    public float atmosphereRadius = 0;
     [SerializeField, Range(0, 10)]
-    private float gravityRadius = 0;
+    public float gravityRadius = 0;
+	public float coreMass
+	{
+		get => 4 / 3 * Mathf.PI * Mathf.Pow(coreRadius, 3); 
+	}
 
     Core core => GetComponentInChildren<Core>();
     Atmosphere atmosphere => GetComponentInChildren<Atmosphere>();
