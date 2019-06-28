@@ -8,6 +8,9 @@ public class ShipPhysic : MonoBehaviour
 	public float maxThrust;
 	public float rotationSpeed;
 	public float gravitationConstant;
+	public AnimationCurve gravityWell;
+	public AnimationCurve airResistance;
+	public float massMultiplayer;
 
 
 	private Rigidbody2D rb;
@@ -33,19 +36,22 @@ public class ShipPhysic : MonoBehaviour
 		Boost();
 		//Debug.Log("Sum of Forces: " + SumOfForces());
 		rb.AddForce(SumOfForces());
-		AutoRotate();
-		//Rotate();
+		//AutoRotate();
+		Rotate();
 	}
 
 
 	public void Boost()
 	{
 		//float thrust = maxThrust * Input.GetAxis("RightTrigger");
-		/*if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(KeyCode.Space))
 		{
-			rb.AddForce(transform.up * maxThrust);
-		}*/
-		if (Input.GetKey(KeyCode.LeftShift))
+			//Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+			//rb.AddForce(input * maxThrust);
+		}
+		Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		rb.AddForce(input * maxThrust);
+		/*if (Input.GetKey(KeyCode.LeftShift))
 		{
 			rb.AddForce(transform.right * maxThrust);
 			Debug.Log("test");
@@ -53,9 +59,14 @@ public class ShipPhysic : MonoBehaviour
 		if (Input.GetKey(KeyCode.LeftControl))
 		{
 			rb.AddForce(transform.right * -maxThrust);
-		}
+		}*/
 
 
+	}
+
+	public void OnTriggerStay2D(Collider2D collision)
+	{
+		
 	}
 
 	public void Rotate()
@@ -101,8 +112,10 @@ public class ShipPhysic : MonoBehaviour
 			float dist = Vector2.Distance(transform.position, planet.transform.position);
 			float pMass = planet.GetComponent<PlanetPhysic>().mass;
 			Vector2 directionNorm = (planet.transform.position - transform.position).normalized;
-			float gravitationForce = gravitationConstant * ((pMass * rb.mass) / (dist * dist));
+			//float gravitationForce = gravitationConstant * ((pMass * rb.mass) / (Mathf.Pow(dist, 2.5f)));
+			float gravitationForce = gravityWell.Evaluate(dist) * massMultiplayer * pMass;
 			//Debug.Log("Graviation Force: " + gravitationForce);
+			Debug.Log(dist);
 			forces += directionNorm * gravitationForce;
 		}
 
