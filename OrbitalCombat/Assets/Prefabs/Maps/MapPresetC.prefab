@@ -334,22 +334,6 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1.5479065
       objectReference: {fileID: 0}
-    - target: {fileID: 5224041163267079969, guid: 7e8ee8b2dfb1223458296d0596630ee5,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.013468765
-      objectReference: {fileID: 0}
-    - target: {fileID: 5224041163267079969, guid: 7e8ee8b2dfb1223458296d0596630ee5,
-        type: 3}
-      propertyPath: m_Radius
-      value: 2.6106977
-      objectReference: {fileID: 0}
-    - target: {fileID: 4720689938020168800, guid: 7e8ee8b2dfb1223458296d0596630ee5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 45d7f8190977e824abfda08082ef37eb,
-        type: 3}
     - target: {fileID: 3833719046091491711, guid: 7e8ee8b2dfb1223458296d0596630ee5,
         type: 3}
       propertyPath: m_Sprite

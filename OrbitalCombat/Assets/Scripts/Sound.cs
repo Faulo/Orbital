@@ -7,14 +7,14 @@ public class Sound
 {
     public string name;
 
-    public AudioClip clip;
+    public AudioClip clip = default;
 
     [Range(0f,1f)]
-    public float volume;
+    public float volume = 0.5f;
     [Range(1f,3f)]
-    public float pitch;
+    public float pitch = 1f;
 
-    public bool loop;
+    public bool loop = false;
 
     [HideInInspector]
     public AudioSource source;

@@ -33,9 +33,11 @@ public class Planet : MonoBehaviour, ICapturable {
                     atmosphere.renderer.sprite = nobodyOrbit;
                     break;
                 case TeamColor.Yellow:
+                    AudioManager.instance.Play("YellowPlanetCapture");
                     atmosphere.renderer.sprite = yellowOrbit;
                     break;
                 case TeamColor.Green:
+                    AudioManager.instance.Play("GreenPlanetCapture");
                     atmosphere.renderer.sprite = greenOrbit;
                     break;
             }
