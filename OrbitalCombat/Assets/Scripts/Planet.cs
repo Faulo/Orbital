@@ -30,7 +30,6 @@ public class Planet : MonoBehaviour {
         atmosphere.transform.localScale = Vector3.one * atmosphereRadius;
 
         var shape = atmosphere.particleSystem.shape;
-        shape.radius = atmosphereRadius;
         shape.radiusThickness = 1 - coreRadius / atmosphereRadius;
 
         gravity.transform.localScale = Vector3.one * gravityRadius;
