@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField, Range(1, 4)]
-    private int playerID = 1;
+    public PlayerConfig config {
+        set {
+            inputId = value.inputId;
+            transform.position = value.spawn.position;
+            GetComponentInChildren<SpriteRenderer>().sprite = value.spaceship;
+            color = value.color;
+            team = GameManager.instance.GetTeam(value.team);
+        }
+    }
+    public TeamConfig team;
+
+    private int inputId;
+
+    public Color color { get; private set; }
 
     [SerializeField, Range(0, 100)]
     private float maxThrust = 1;
-
-    [SerializeField, Range(0, 100)]
-    private float maxSpeed = 10;
 
     [SerializeField, Range(0, 100)]
     private float rotationSpeed = 1;
@@ -24,22 +33,20 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Boost() {
-		var input = new Vector2(Input.GetAxis("Horizontal" + playerID), Input.GetAxis("Vertical" + playerID));
+        var input = new Vector2(Input.GetAxis("Horizontal" + inputId), Input.GetAxis("Vertical" + inputId));
 
-		if (input.magnitude > 0)
-		{
-			float inputAngle = Vector2.SignedAngle(Vector2.up, input);
-			Quaternion rot = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(inputAngle, Vector3.forward), rotationSpeed);
+        if (input.magnitude > 0) {
+            float inputAngle = Vector2.SignedAngle(Vector2.up, input);
+            Quaternion rot = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(inputAngle, Vector3.forward), rotationSpeed);
 
-			transform.rotation = rot;
+            transform.rotation = rot;
 
             var dragBonus = 1 + rb.drag;
             rb.AddForce(transform.up * maxThrust * input.magnitude * dragBonus);
         }
-	}
+    }
 
-	private void ShootRocket()
-	{
+    private void ShootRocket() {
 
-	}
+    }
 }

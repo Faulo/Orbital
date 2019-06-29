@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -64,7 +65,9 @@ public class ShipPhysic : MonoBehaviour
 
 	}
 
-	public void OnTriggerStay2D(Collider2D collision)
+   
+
+    public void OnTriggerStay2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag =="Planet")
 		{
