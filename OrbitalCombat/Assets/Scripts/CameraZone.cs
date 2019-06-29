@@ -8,7 +8,7 @@ public class CameraZone : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D other) {
         var player = other.GetComponent<PlayerController>();
-        if (player && !currentIndicators.ContainsKey(player)) {
+        if (player && player.isAlive && !currentIndicators.ContainsKey(player)) {
             currentIndicators[player] = Instantiate(indicatorPrefab).GetComponent<PlayerIndicator>();
             currentIndicators[player].AssignPlayer(player);
         }

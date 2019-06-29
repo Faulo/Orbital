@@ -42,10 +42,6 @@ public class ScoreManager : MonoBehaviour {
 
     private void UpdateScore() {
         foreach (var capturable in capturables) {
-            pointsTeamYellow += capturable.WorthForTeam(TeamColor.Yellow);
-            pointsTeamGreen += capturable.WorthForTeam(TeamColor.Green);
-
-            /*
             switch (capturable.belongsTo) {
                 case TeamColor.Yellow:
                     pointsTeamYellow += capturable.worth;
@@ -54,7 +50,6 @@ public class ScoreManager : MonoBehaviour {
                     pointsTeamGreen += capturable.worth;
                     break;
             }
-            //*/
         }
 
         if (pointsTeamYellow >= pointsToWin)
