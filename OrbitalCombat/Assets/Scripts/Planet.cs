@@ -8,7 +8,7 @@ public class Planet : MonoBehaviour {
     public float coreRadius = 0;
     [SerializeField, Range(0, 10)]
     public float atmosphereRadius = 0;
-    [SerializeField, Range(0, 10)]
+    [SerializeField, Range(0, 20)]
     public float gravityRadius = 0;
 	public float coreMass
 	{
@@ -29,8 +29,8 @@ public class Planet : MonoBehaviour {
 
         atmosphere.transform.localScale = Vector3.one * atmosphereRadius * 2;
 
-        var shape = atmosphere.particleSystem.shape;
-        shape.radiusThickness = 1 - coreRadius / atmosphereRadius * 2;
+        //var shape = atmosphere.particleSystem.shape;
+        //shape.radiusThickness = 1 - coreRadius / atmosphereRadius * 2;
 
         gravity.transform.localScale = Vector3.one * gravityRadius * 2;
 #endif
