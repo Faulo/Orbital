@@ -7,8 +7,8 @@ public class Atmosphere : MonoBehaviour {
 
     [SerializeField]
     private AnimationCurve dragOverDistance = default;
-	[SerializeField]
-	private float maxDrag;
+	[SerializeField, Range(0, 2)]
+	private float maxDrag = 0;
 
 	public new ParticleSystem particleSystem => GetComponent<ParticleSystem>();
     public new CircleCollider2D collider => GetComponent<CircleCollider2D>();
@@ -35,7 +35,7 @@ public class Atmosphere : MonoBehaviour {
 			collision.attachedRigidbody.drag = dragOverDistance.Evaluate(t) * maxDrag;
 
 		}
-	}
+    }
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
