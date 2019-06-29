@@ -17,6 +17,10 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsButton;
     public Text[] creditsText;
 
+    public AudioClip clickSound;
+
+    private AudioSource audio;
+
     private string[] names = new string[6]
     {
         "Carl-Philipp Hellmuth",
@@ -29,6 +33,7 @@ public class MainMenu : MonoBehaviour
       
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
@@ -108,5 +113,10 @@ public class MainMenu : MonoBehaviour
             texts[t] = texts[r];
             texts[r] = tmp;
         }
+    }
+
+    public void Click ()
+    {
+        audio.PlayOneShot(clickSound);
     }
 }
