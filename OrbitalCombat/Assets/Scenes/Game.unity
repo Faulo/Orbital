@@ -34161,22 +34161,22 @@ MonoBehaviour:
   players:
   - inputId: 1
     team: 1
-    color: {r: 0.7411765, g: 0.5411765, b: 0.03137255, a: 1}
+    color: {r: 0.7411765, g: 0.6054306, b: 0.25941178, a: 1}
     spaceship: {fileID: 21300000, guid: e4fb09187b0a9e8439ec7e672731130f, type: 3}
     spawn: {fileID: 522168685}
   - inputId: 2
     team: 2
-    color: {r: 0.078431375, g: 0.36862746, b: 0.10588236, a: 1}
+    color: {r: 0.23555295, g: 0.36862746, b: 0.24814107, a: 1}
     spaceship: {fileID: 21300000, guid: ac855c3082c520046a285e9c199c257a, type: 3}
     spawn: {fileID: 1513729233}
   - inputId: 3
     team: 1
-    color: {r: 0.9686275, g: 0.82745105, b: 0.45098042, a: 1}
+    color: {r: 0.96862745, g: 0.8716767, b: 0.6131412, a: 1}
     spaceship: {fileID: 21300000, guid: 628e3111d893f4f47b716516caad38f1, type: 3}
     spawn: {fileID: 32932433}
   - inputId: 4
     team: 2
-    color: {r: 0.22352943, g: 0.6509804, b: 0.22352943, a: 1}
+    color: {r: 0.38733333, g: 0.6509804, b: 0.38733333, a: 1}
     spaceship: {fileID: 21300000, guid: 4926d4f8a3388be42bf53cc7adf8b8b8, type: 3}
     spawn: {fileID: 2085481968}
   teams:
