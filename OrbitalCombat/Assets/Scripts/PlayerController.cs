@@ -4,10 +4,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField, Range(1, 4)]
     private int playerID = 1;
 
-    [SerializeField, Range(0, 10)]
+    [SerializeField, Range(0, 100)]
     private float maxThrust = 1;
 
-    [SerializeField, Range(0, 10)]
+    [SerializeField, Range(0, 100)]
+    private float maxSpeed = 10;
+
+    [SerializeField, Range(0, 100)]
     private float rotationSpeed = 1;
 
     private Rigidbody2D rb;
@@ -29,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 			Quaternion rot = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(inputAngle, Vector3.forward), rotationSpeed);
 
 			transform.rotation = rot;
-			rb.AddForce(transform.up * maxThrust * input.magnitude);
+            rb.AddForce(transform.up * maxThrust * input.magnitude);
 		}
 	}
 

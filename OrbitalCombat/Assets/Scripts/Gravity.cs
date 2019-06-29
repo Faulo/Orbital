@@ -6,11 +6,20 @@ using UnityEngine;
 public class Gravity : MonoBehaviour {
     public new CircleCollider2D collider => GetComponent<CircleCollider2D>();
     public Planet planet => GetComponentInParent<Planet>();
-	public float gravModMinVelocity;
-	public float gravModMaxVelocity;
-	public AnimationCurve gravModOverVelocity;
 
-	[SerializeField]
+    [SerializeField]
+    private bool gravModActive = true;
+
+    [SerializeField]
+    private AnimationCurve gravModOverVelocity = default;
+
+    [SerializeField]
+    private float gravModMinVelocity = 4;
+
+    [SerializeField]
+    private float gravModMaxVelocity = 10;
+
+    [SerializeField]
     private AnimationCurve gravityOverDistance = default;
 
     void OnTriggerStay2D(Collider2D other) {
@@ -22,8 +31,9 @@ public class Gravity : MonoBehaviour {
 
 			float velocity = other.attachedRigidbody.velocity.magnitude;
 			float tGravMod = (velocity - gravModMinVelocity) / (gravModMaxVelocity - gravModMinVelocity);
-			float gravMod = gravModOverVelocity.Evaluate(t);
-			Debug.Log(velocity); 
+			float gravMod = gravModActive
+                ? gravModOverVelocity.Evaluate(t)
+                : 1;
 
 			float gravitationForce = gravityOverDistance.Evaluate(t) * other.attachedRigidbody.mass * planet.coreMass * gravMod;
 

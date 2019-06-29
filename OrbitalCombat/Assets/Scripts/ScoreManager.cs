@@ -7,7 +7,8 @@ public class ScoreManager : MonoBehaviour {
     public Image barTeamGreen;
 
     // Parameters for balancing
-    private readonly int pointsToWin = 100;
+    [SerializeField, Range(1, 1000)]
+    private int pointsToWin = 100;
 
     // Variables
     private IEnumerable<ICapturable> capturables;
@@ -15,6 +16,9 @@ public class ScoreManager : MonoBehaviour {
     private float pointsTeamGreen; // Team Index: 2
 
     private float fillPerPoint;
+
+    [SerializeField, Range(0, 1)]
+    private float fillSpeed = 1f;
 
     public void Init(GameObject mapParent) {
         capturables = mapParent.GetComponentsInChildren<ICapturable>();
@@ -30,12 +34,10 @@ public class ScoreManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (barTeamYellow.fillAmount < pointsTeamYellow * fillPerPoint)
-            barTeamYellow.fillAmount += 0.0005f;
-
-        if (barTeamGreen.fillAmount < pointsTeamGreen * fillPerPoint)
-            barTeamGreen.fillAmount += 0.0005f;
+        barTeamYellow.fillAmount = Mathf.Lerp(barTeamYellow.fillAmount, pointsTeamYellow * fillPerPoint, fillSpeed);
+        barTeamGreen.fillAmount = Mathf.Lerp(barTeamGreen.fillAmount, pointsTeamGreen * fillPerPoint, fillSpeed);
     }
+
 
     private void UpdateScore() {
         foreach (var capturable in capturables) {
