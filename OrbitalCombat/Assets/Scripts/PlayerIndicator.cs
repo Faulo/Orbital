@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class PlayerIndicator : MonoBehaviour
-{
+public class PlayerIndicator : MonoBehaviour {
     private PlayerController player;
+    private Transform icon => transform.GetChild(0);
 
     private float verticalBorder = 10.5f; //10.8f - 0.3f
     private float horizontalBorder = 18.9f; //19.2f - 0.3f
@@ -15,10 +15,14 @@ public class PlayerIndicator : MonoBehaviour
         player = givenPlayer;
 
         GetComponent<SpriteRenderer>().color = player.color;
+
+        icon.GetComponent<SpriteRenderer>().sprite = player.GetComponentInChildren<SpriteRenderer>().sprite;
     }
 
     void Update()
     {
+        icon.rotation = player.transform.rotation;
+
         if (player.transform.position.y > verticalBorder)
         {
             transform.position = new Vector2(
