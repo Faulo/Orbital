@@ -8,6 +8,7 @@ public class Core : MonoBehaviour {
         get => transform.localScale.x * collider.radius;
     }
     public new CircleCollider2D collider => GetComponent<CircleCollider2D>();
+    public new SpriteRenderer renderer => GetComponent<SpriteRenderer>();
 
     // Start is called before the first frame update
     void Start() {

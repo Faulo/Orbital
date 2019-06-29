@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
  [RequireComponent(typeof(ScoreManager))]
 public class GameManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] mapPresets;
 
     private GameObject mapParent;
-    private GameObject[] planets;
+    private Planet[] planets;
 
     private void Awake ()
     {
@@ -23,18 +24,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         mapParent = Instantiate(mapPresets[Random.Range(0, mapPresets.Length)], Vector3.zero, Quaternion.identity);
-        planets = new GameObject[mapParent.transform.childCount];
-        for (int j = 0; j < mapParent.transform.childCount; j++)
-        {
-            planets[j] = mapParent.transform.GetChild(j).gameObject;
-            planets[j].GetComponent<PlanetManager>().Init();
+        planets = mapParent.GetComponentsInChildren<Planet>();
+        foreach (var planet in planets) {
+            if (Random.Range(0f, 1f) > 0.5f) {
+                planet.belongsTo = TeamColor.Yellow;
+            } else {
+                planet.belongsTo = TeamColor.Green;
+            }
         }
 
         GetComponent<ScoreManager>().Init(mapParent);
-
-        planets[0].GetComponent<PlanetManager>().SetToTeam(1);
-        planets[2].GetComponent<PlanetManager>().SetToTeam(2);
-        planets[3].GetComponent<PlanetManager>().SetToTeam(2);
     }
 
     public void GameOver (int winningTeam)
