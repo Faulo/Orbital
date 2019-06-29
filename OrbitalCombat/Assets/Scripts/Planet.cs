@@ -12,7 +12,7 @@ public class Planet : MonoBehaviour {
     public float gravityRadius = 0;
 	public float coreMass
 	{
-		get => 4 / 3 * Mathf.PI * Mathf.Pow(coreRadius, 3); 
+		get => 4 / 3 * Mathf.PI * Mathf.Pow(coreRadius, 3)* 2; 
 	}
 
     Core core => GetComponentInChildren<Core>();
@@ -25,14 +25,14 @@ public class Planet : MonoBehaviour {
 
     void Update() {
 #if UNITY_EDITOR
-        core.transform.localScale = Vector3.one * coreRadius;
+        core.transform.localScale = Vector3.one * coreRadius * 2;
 
-        atmosphere.transform.localScale = Vector3.one * atmosphereRadius;
+        atmosphere.transform.localScale = Vector3.one * atmosphereRadius * 2;
 
         var shape = atmosphere.particleSystem.shape;
-        shape.radiusThickness = 1 - coreRadius / atmosphereRadius;
+        shape.radiusThickness = 1 - coreRadius / atmosphereRadius * 2;
 
-        gravity.transform.localScale = Vector3.one * gravityRadius;
+        gravity.transform.localScale = Vector3.one * gravityRadius * 2;
 #endif
     }
 }

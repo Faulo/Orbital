@@ -10,7 +10,7 @@ public class ShipPhysic : MonoBehaviour
 	public float gravitationConstant;
 	public AnimationCurve gravityWell;
 	public AnimationCurve airResistance;
-	public float massMultiplayer;
+	public float maxAirResistance;
 
 
 	private Rigidbody2D rb;
@@ -66,7 +66,11 @@ public class ShipPhysic : MonoBehaviour
 
 	public void OnTriggerStay2D(Collider2D collision)
 	{
-		
+		if (collision.gameObject.tag =="Planet")
+		{
+			float dist = Vector2.Distance(transform.position, collision.gameObject.transform.position);
+			rb.drag = maxAirResistance * airResistance.Evaluate(dist);
+		}
 	}
 
 	public void Rotate()
@@ -113,7 +117,7 @@ public class ShipPhysic : MonoBehaviour
 			float pMass = planet.GetComponent<PlanetPhysic>().mass;
 			Vector2 directionNorm = (planet.transform.position - transform.position).normalized;
 			//float gravitationForce = gravitationConstant * ((pMass * rb.mass) / (Mathf.Pow(dist, 2.5f)));
-			float gravitationForce = gravityWell.Evaluate(dist) * massMultiplayer * pMass;
+			float gravitationForce = gravityWell.Evaluate(dist) * pMass;
 			//Debug.Log("Graviation Force: " + gravitationForce);
 			Debug.Log(dist);
 			forces += directionNorm * gravitationForce;
