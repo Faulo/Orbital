@@ -30,17 +30,12 @@ public class Planet : MonoBehaviour, ICapturable {
             belongsToCache = value;
             switch (belongsToCache) {
                 case TeamColor.Nobody:
-                    //core.renderer.color = Color.white;
                     atmosphere.renderer.sprite = nobodyOrbit;
                     break;
-
                 case TeamColor.Yellow:
-                    //core.renderer.color = new Color(1.0f, 0.8252001f, 0.126f);
                     atmosphere.renderer.sprite = yellowOrbit;
                     break;
-
                 case TeamColor.Green:
-                    //core.renderer.color = new Color(0.2812904f, 0.699f, 0.08771764f);
                     atmosphere.renderer.sprite = greenOrbit;
                     break;
             }
@@ -58,6 +53,7 @@ public class Planet : MonoBehaviour, ICapturable {
     }
 
     void Update() {
+
 #if UNITY_EDITOR
         if (atmosphereRadius < coreRadius) {
             atmosphereRadius = coreRadius;
@@ -75,11 +71,5 @@ public class Planet : MonoBehaviour, ICapturable {
 
         gravity.transform.localScale = Vector3.one * gravityRadius / gravity.collider.radius;
 #endif
-    }
-
-    public float WorthForTeam(TeamColor team) {
-        return atmosphere.lines
-            .Where(line => line.team == team)
-            .Count() * worth;
     }
 }
