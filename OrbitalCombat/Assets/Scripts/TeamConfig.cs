@@ -7,4 +7,5 @@ using UnityEngine;
 public class TeamConfig {
     public TeamColor color;
     public Color capturingColor;
+    public Sprite missile;
 }
