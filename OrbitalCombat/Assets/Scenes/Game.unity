@@ -33867,6 +33867,7 @@ GameObject:
   - component: {fileID: 1997010436}
   - component: {fileID: 1997010435}
   - component: {fileID: 1997010434}
+  - component: {fileID: 1997010439}
   m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
@@ -33993,6 +33994,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1997010439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997010433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ce75f42fad7624cbc25c0402a481b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefab: {fileID: 5441123375524599943, guid: 84ee2c12c397465469920cd2e9fd2c4a,
+    type: 3}
+  asteroidInterval: 0
+  asteroidLaunchSpeed: 1
 --- !u!1 &2048912442
 GameObject:
   m_ObjectHideFlags: 0
