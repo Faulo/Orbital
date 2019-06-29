@@ -1,14 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
  [RequireComponent(typeof(ScoreManager))]
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
+    [Range(2,4)]
+    public int numberOfPlayers;
     public GameObject[] mapPresets;
 
     private GameObject mapParent;
     private GameObject[] planets;
+
+    private void Awake ()
+    {
+        if (!instance)
+            instance = this;
+        else if (instance != this)
+            Destroy(this);
+    }
 
     private void Start()
     {
