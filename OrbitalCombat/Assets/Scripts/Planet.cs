@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -74,5 +75,11 @@ public class Planet : MonoBehaviour, ICapturable {
 
         gravity.transform.localScale = Vector3.one * gravityRadius / gravity.collider.radius;
 #endif
+    }
+
+    public float WorthForTeam(TeamColor team) {
+        return atmosphere.lines
+            .Where(line => line.team == team)
+            .Count() * worth;
     }
 }

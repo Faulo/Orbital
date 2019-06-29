@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour {
     public Image barTeamGreen;
 
     // Parameters for balancing
-    [SerializeField, Range(1, 1000)]
+    [SerializeField, Range(1, 100000)]
     private int pointsToWin = 100;
 
     // Variables
@@ -32,7 +32,8 @@ public class ScoreManager : MonoBehaviour {
 
         InvokeRepeating("UpdateScore", 1.0f, 1.0f);
     }
-
+    private void Start() {
+    }
     private void Update() {
         barTeamYellow.fillAmount = Mathf.Lerp(barTeamYellow.fillAmount, pointsTeamYellow * fillPerPoint, fillSpeed);
         barTeamGreen.fillAmount = Mathf.Lerp(barTeamGreen.fillAmount, pointsTeamGreen * fillPerPoint, fillSpeed);
@@ -41,6 +42,10 @@ public class ScoreManager : MonoBehaviour {
 
     private void UpdateScore() {
         foreach (var capturable in capturables) {
+            pointsTeamYellow += capturable.WorthForTeam(TeamColor.Yellow);
+            pointsTeamGreen += capturable.WorthForTeam(TeamColor.Green);
+
+            /*
             switch (capturable.belongsTo) {
                 case TeamColor.Yellow:
                     pointsTeamYellow += capturable.worth;
@@ -49,6 +54,7 @@ public class ScoreManager : MonoBehaviour {
                     pointsTeamGreen += capturable.worth;
                     break;
             }
+            //*/
         }
 
         if (pointsTeamYellow >= pointsToWin)
