@@ -7,10 +7,14 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject menuParent;
     public GameObject creditsParent;
+    public GameObject optionsParent;
+    public Slider playerSlider;
 
     public GameObject startButton;
     public GameObject backButtonCredits;
+    public GameObject backButtonOptions;
     public GameObject creditsButton;
+    public GameObject optionsButton;
     public Text[] creditsText;
 
     private string[] names = new string[6]
@@ -60,6 +64,39 @@ public class MainMenu : MonoBehaviour
         menuParent.SetActive(true);
         creditsButton.GetComponent<Animator>().SetTrigger("Normal");
         EventSystem.current.SetSelectedGameObject(creditsButton);
+    }
+
+    public void GoToOptions()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        menuParent.SetActive(false);
+        optionsParent.SetActive(true);
+        backButtonOptions.GetComponent<Animator>().SetTrigger("Normal");
+        EventSystem.current.SetSelectedGameObject(backButtonOptions);
+    }
+
+    public void GoBackFromOptions()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        optionsParent.SetActive(false);
+        menuParent.SetActive(true);
+        optionsButton.GetComponent<Animator>().SetTrigger("Normal");
+        EventSystem.current.SetSelectedGameObject(optionsButton);
+    }
+
+    public void SetNumberOfPlayers ()
+    {
+        switch (playerSlider.value)
+        {
+            case 0:
+                // TODO: Set player number to two
+                Debug.Log("2 players!");
+                break;
+            case 1:
+                // TODO: Set player number to four
+                Debug.Log("4 players!");
+                break;
+        } 
     }
 
     private void Shuffle (string[] texts)
