@@ -137,7 +137,7 @@ Transform:
   m_GameObject: {fileID: 7671686967034627361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0833333, y: 2.0833333, z: 2.0833333}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 8667899188684908497}
   m_RootOrder: 1
@@ -157,7 +157,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.44
+  m_Radius: 1.5
 --- !u!114 &3453714116947272784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +195,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   maxDrag: 0.5
+  linePrefab: {fileID: 8775958872021536617, guid: a8f45d426acf61a48ab5746abdeba350,
+    type: 3}
+  lines: []
 --- !u!212 &4720689938020168800
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -290,8 +293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nobodyOrbit: {fileID: 21300000, guid: f057bc8d03d0046dab3f62ad0883d919, type: 3}
-  yellowOrbit: {fileID: 21300000, guid: a9919f24fb6754c12ac89fe66a2e2967, type: 3}
-  greenOrbit: {fileID: 21300000, guid: 92e6b7c805a5c41ca84dc79a00d76b72, type: 3}
+  yellowOrbit: {fileID: 21300000, guid: 0121f677418c2c54780059a9568bf127, type: 3}
+  greenOrbit: {fileID: 21300000, guid: 17e7ec9483e573d49a6dafe1eef98d79, type: 3}
   coreRadius: 1
   atmosphereRadius: 3
   gravityRadius: 6
