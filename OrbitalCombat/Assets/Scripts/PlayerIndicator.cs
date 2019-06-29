@@ -7,8 +7,8 @@ public class PlayerIndicator : MonoBehaviour {
     private float verticalBorder = 10.5f; //10.8f - 0.3f
     private float horizontalBorder = 18.9f; //19.2f - 0.3f
 
-    private float verticalPosition = 10.2f; // 10.8f - 0.6f
-    private float horizontalPosition = 18.6f; // 19.2f - 0.6f
+    private float verticalPosition = 9.8f; // 10.8f - 1.0f
+    private float horizontalPosition = 18.2f; // 19.2f - 1.0f
 
     public void AssignPlayer(PlayerController givenPlayer)
     {
