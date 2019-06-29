@@ -32,8 +32,11 @@ public class PlayerController : MonoBehaviour {
 			Quaternion rot = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(inputAngle, Vector3.forward), rotationSpeed);
 
 			transform.rotation = rot;
-            rb.AddForce(transform.up * maxThrust * input.magnitude);
-		}
+
+            var limiter = 1 - (rb.velocity.magnitude / maxSpeed);
+            limiter = 1;
+            rb.AddForce(transform.up * maxThrust * input.magnitude * limiter);
+        }
 	}
 
 	private void ShootRocket()

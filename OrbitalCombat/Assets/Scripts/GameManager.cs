@@ -26,10 +26,13 @@ public class GameManager : MonoBehaviour
         mapParent = Instantiate(mapPresets[Random.Range(0, mapPresets.Length)], Vector3.zero, Quaternion.identity);
         planets = mapParent.GetComponentsInChildren<Planet>();
         foreach (var planet in planets) {
-            if (Random.Range(0f, 1f) > 0.5f) {
+            var random = Random.Range(0f, 1f);
+            if (random > 0.7) {
                 planet.belongsTo = TeamColor.Yellow;
-            } else {
+            } else if (random > 0.4) {
                 planet.belongsTo = TeamColor.Green;
+            } else {
+                planet.belongsTo = TeamColor.Nobody;
             }
         }
 

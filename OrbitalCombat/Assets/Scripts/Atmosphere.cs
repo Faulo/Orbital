@@ -12,8 +12,9 @@ public class Atmosphere : MonoBehaviour {
 
 	public new ParticleSystem particleSystem => GetComponent<ParticleSystem>();
     public new CircleCollider2D collider => GetComponent<CircleCollider2D>();
+    public new SpriteRenderer renderer => GetComponent<SpriteRenderer>();
 
-	private Planet planet;
+    private Planet planet;
 
 	void Start()
 	{
