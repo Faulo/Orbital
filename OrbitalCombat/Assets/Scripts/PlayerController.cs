@@ -6,13 +6,15 @@ public class PlayerController : MonoBehaviour {
             inputId = value.inputId;
             transform.position = value.spawn.position;
             GetComponentInChildren<SpriteRenderer>().sprite = value.spaceship;
-            GetComponentInChildren<SpriteRenderer>().color = value.color;
+            color = value.color;
             team = GameManager.instance.GetTeam(value.team);
         }
     }
     public TeamConfig team;
 
     private int inputId;
+
+    public Color color { get; private set; }
 
     [SerializeField, Range(0, 100)]
     private float maxThrust = 1;

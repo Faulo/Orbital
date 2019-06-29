@@ -34155,37 +34155,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5389bfbe426a4ff498f0a7673a7ee6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPlayers: 4
+  numberOfPlayers: 2
   playerPrefab: {fileID: 1412075990048929569, guid: 45802a6d7ccf2ea47a9e1226853b57b9,
     type: 3}
   players:
   - inputId: 1
     team: 1
-    color: {r: 1, g: 0.80655015, b: 0, a: 1}
+    color: {r: 0.7411765, g: 0.5411765, b: 0.03137255, a: 1}
     spaceship: {fileID: 21300000, guid: e4fb09187b0a9e8439ec7e672731130f, type: 3}
     spawn: {fileID: 522168685}
   - inputId: 2
-    team: 1
-    color: {r: 1, g: 0.7317089, b: 0, a: 1}
-    spaceship: {fileID: 21300000, guid: 628e3111d893f4f47b716516caad38f1, type: 3}
+    team: 2
+    color: {r: 0.078431375, g: 0.36862746, b: 0.10588236, a: 1}
+    spaceship: {fileID: 21300000, guid: ac855c3082c520046a285e9c199c257a, type: 3}
     spawn: {fileID: 1513729233}
   - inputId: 3
-    team: 2
-    color: {r: 0, g: 1, b: 0.07986307, a: 1}
-    spaceship: {fileID: 21300000, guid: ac855c3082c520046a285e9c199c257a, type: 3}
+    team: 1
+    color: {r: 0.9686275, g: 0.82745105, b: 0.45098042, a: 1}
+    spaceship: {fileID: 21300000, guid: 628e3111d893f4f47b716516caad38f1, type: 3}
     spawn: {fileID: 32932433}
   - inputId: 4
     team: 2
-    color: {r: 0.039849043, g: 1, b: 0, a: 1}
+    color: {r: 0.22352943, g: 0.6509804, b: 0.22352943, a: 1}
     spaceship: {fileID: 21300000, guid: 4926d4f8a3388be42bf53cc7adf8b8b8, type: 3}
     spawn: {fileID: 2085481968}
   teams:
   - color: 1
-    capturingColor: {r: 1, g: 0.9487194, b: 0, a: 0}
+    capturingColor: {r: 0.8784314, g: 0.65882355, b: 0.105882354, a: 1}
   - color: 2
-    capturingColor: {r: 0, g: 1, b: 0.07073355, a: 0}
+    capturingColor: {r: 0.10980392, g: 0.7294118, b: 0.20392157, a: 1}
   mapPresets:
   - {fileID: 8711434106956970373, guid: a26328580103b754ba8bf1dee9a9a095, type: 3}
+  - {fileID: 8711434106956970373, guid: be4342dbea7c46d45882d90e5dd9461d, type: 3}
+  - {fileID: 8711434106956970373, guid: e844b099beaa20246ab2107ed7412b8c, type: 3}
 --- !u!1001 &7740961779273433603
 PrefabInstance:
   m_ObjectHideFlags: 0
