@@ -3,6 +3,7 @@
 public class PlayerController : MonoBehaviour {
     public float playerID;
     public float maxThrust;
+	public float rotaionSpeed;
 
     private Rigidbody2D rb;
 
@@ -35,6 +36,17 @@ public class PlayerController : MonoBehaviour {
                 }
         }
 
-        rb.AddForce(input * maxThrust);
-    }
+		if (input.magnitude > 0)
+		{
+			float inputAngle = Vector2.SignedAngle(Vector2.up, input);
+			Quaternion rot = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(inputAngle, Vector3.forward), rotaionSpeed);
+
+			transform.rotation = rot;
+			rb.AddForce(transform.up * maxThrust * input.magnitude);
+		}
+
+		//transform.up = Vector3.RotateTowards(transform.up, input, rotaionSpeed, 1);
+
+		//rb.AddForce(transform.right * maxThrust);
+	}
 }
