@@ -16,25 +16,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Boost() {
-        Vector2 input = Vector2.zero;
-        switch (playerID) {
-            case 1: {
-                    input = new Vector2(Input.GetAxis("Horizontal1"), Input.GetAxis("Vertical1"));
-                    break;
-                }
-            case 2: {
-                    input = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
-                    break;
-                }
-            case 3: {
-                    input = new Vector2(Input.GetAxis("Horizontal3"), Input.GetAxis("Vertical3"));
-                    break;
-                }
-            case 4: {
-                    input = new Vector2(Input.GetAxis("Horizontal4"), Input.GetAxis("Vertical4"));
-                    break;
-                }
-        }
+		var input = new Vector2(Input.GetAxis("Horizontal" + playerID), Input.GetAxis("Vertical" + playerID));
 
 		if (input.magnitude > 0)
 		{
@@ -44,9 +26,10 @@ public class PlayerController : MonoBehaviour {
 			transform.rotation = rot;
 			rb.AddForce(transform.up * maxThrust * input.magnitude);
 		}
+	}
 
-		//transform.up = Vector3.RotateTowards(transform.up, input, rotaionSpeed, 1);
+	private void ShootRocket()
+	{
 
-		//rb.AddForce(transform.right * maxThrust);
 	}
 }
