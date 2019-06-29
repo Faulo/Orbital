@@ -95,9 +95,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 731593187
+  m_SortingLayer: 1
+  m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: 7bd4062ddb9ef406ba2731a81a8169f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -140,7 +140,7 @@ Transform:
   m_LocalScale: {x: 2.0833333, y: 2.0833333, z: 2.0833333}
   m_Children: []
   m_Father: {fileID: 8667899188684908497}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5224041163267079969
 CircleCollider2D:
@@ -229,9 +229,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 731593187
+  m_SortingLayer: 1
+  m_SortingOrder: -6
   m_Sprite: {fileID: 21300000, guid: f057bc8d03d0046dab3f62ad0883d919, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -272,8 +272,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2870702324925823772}
-  - {fileID: 8667899189816644446}
   - {fileID: 2324245711827106335}
+  - {fileID: 8667899189816644446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -327,7 +327,7 @@ Transform:
   m_LocalScale: {x: 4.7244096, y: 4.7244096, z: 4.7244096}
   m_Children: []
   m_Father: {fileID: 8667899188684908497}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6798592570758265048
 CircleCollider2D:
@@ -442,9 +442,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 731593187
+  m_SortingLayer: 1
+  m_SortingOrder: -8
   m_Sprite: {fileID: 21300000, guid: f057bc8d03d0046dab3f62ad0883d919, type: 3}
   m_Color: {r: 0, g: 0, b: 0.23584908, a: 0.42745098}
   m_FlipX: 0
