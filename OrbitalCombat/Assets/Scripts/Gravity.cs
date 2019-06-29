@@ -10,12 +10,12 @@ public class Gravity : MonoBehaviour {
     [SerializeField]
     private AnimationCurve gravityOverDistance = default;
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay2D(Collider2D other) {
         if (other.attachedRigidbody) {
-            Vector2 directionNorm = (planet.transform.position - transform.position).normalized;
+            Vector2 directionNorm = (transform.position - other.transform.position).normalized;
             float dist = Vector2.Distance(transform.position, other.transform.position);
             float gravitationForce = gravityOverDistance.Evaluate(dist) * other.attachedRigidbody.mass * planet.coreMass;
-            
+
             other.attachedRigidbody.AddForce(directionNorm * gravitationForce);
         }
     }
