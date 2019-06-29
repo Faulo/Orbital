@@ -16,8 +16,18 @@ public class CaptureSection : MonoBehaviour, ICapturable {
     public TeamColor belongsTo {
         get => belongsToCache;
         set {
-            belongsToCache = value;
-            color = GameManager.instance.GetTeam(value).capturingColor;
+            if (belongsToCache != value) {
+                belongsToCache = value;
+                switch (belongsToCache) {
+                    case TeamColor.Yellow:
+                        AudioManager.instance.Play("YellowSectionCapture");
+                        break;
+                    case TeamColor.Green:
+                        AudioManager.instance.Play("GreenSectionCapture");
+                        break;
+                }
+                color = GameManager.instance.GetTeam(value).capturingColor;
+            }
         }
     }
     private TeamColor belongsToCache;
