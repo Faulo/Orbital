@@ -33,9 +33,8 @@ public class PlayerController : MonoBehaviour {
 
 			transform.rotation = rot;
 
-            var limiter = 1 - (rb.velocity.magnitude / maxSpeed);
-            limiter = 1;
-            rb.AddForce(transform.up * maxThrust * input.magnitude * limiter);
+            var dragBonus = 1 + rb.drag;
+            rb.AddForce(transform.up * maxThrust * input.magnitude * dragBonus);
         }
 	}
 
