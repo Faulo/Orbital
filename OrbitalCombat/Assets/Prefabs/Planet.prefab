@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1311158423157105009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.1111112, y: 1.1111112, z: 1.1111112}
   m_Children: []
   m_Father: {fileID: 8667899188684908497}
   m_RootOrder: 0
@@ -136,7 +136,7 @@ Transform:
   m_GameObject: {fileID: 7671686967034627361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 8667899188684908497}
   m_RootOrder: 2
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxDrag: 1.5
+  maxDrag: 0.5
 --- !u!1 &8667899188684908500
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coreRadius: 1
-  atmosphereRadius: 4
-  gravityRadius: 10
+  atmosphereRadius: 3
+  gravityRadius: 6
 --- !u!1 &8667899189816644445
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 8667899189816644445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_Children: []
   m_Father: {fileID: 8667899188684908497}
   m_RootOrder: 1
@@ -303,8 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a03eec23989db54ebe7f53d0d773684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravModMinVelocity: 4
-  gravModMaxVelocity: 10
+  gravModActive: 0
   gravModOverVelocity:
     serializedVersion: 2
     m_Curve:
@@ -329,6 +328,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  gravModMinVelocity: 4
+  gravModMaxVelocity: 10
   gravityOverDistance:
     serializedVersion: 2
     m_Curve:

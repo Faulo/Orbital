@@ -34416,6 +34416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barTeamYellow: {fileID: 736386855}
   barTeamGreen: {fileID: 424436281}
+  pointsToWin: 500
+  fillSpeed: 0.1
 --- !u!4 &2132889723
 Transform:
   m_ObjectHideFlags: 0
