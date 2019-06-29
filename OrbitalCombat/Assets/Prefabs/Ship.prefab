@@ -85,7 +85,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 1
   maxThrust: 5
-  rotationSpeed: 7
+  maxSpeed: 10
+  rotationSpeed: 10
 --- !u!1 &1412075990459041044
 GameObject:
   m_ObjectHideFlags: 0

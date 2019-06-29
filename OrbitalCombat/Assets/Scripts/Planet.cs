@@ -4,14 +4,24 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class Planet : MonoBehaviour, ICapturable {
-    [SerializeField, Range(0, 10)]
+    [SerializeField]
+    private Sprite nobodyOrbit = default;
+    [SerializeField]
+    private Sprite yellowOrbit = default;
+    [SerializeField]
+    private Sprite greenOrbit = default;
+
+    [SerializeField, Range(0, 20)]
     public float coreRadius = 0;
-    [SerializeField, Range(0, 10)]
+    [SerializeField, Range(0, 20)]
     public float atmosphereRadius = 0;
     [SerializeField, Range(0, 20)]
     public float gravityRadius = 0;
+    [SerializeField, Range(0, 10000)]
+    public float coreDensity = 0;
+
     public float coreMass {
-        get => 4 / 3 * Mathf.PI * Mathf.Pow(coreRadius, 3) * 2;
+        get => coreRadius * coreDensity;
     }
     public TeamColor belongsTo {
         get => belongsToCache;
@@ -19,15 +29,18 @@ public class Planet : MonoBehaviour, ICapturable {
             belongsToCache = value;
             switch (belongsToCache) {
                 case TeamColor.Nobody:
-                    core.renderer.color = Color.white;
+                    //core.renderer.color = Color.white;
+                    atmosphere.renderer.sprite = nobodyOrbit;
                     break;
 
                 case TeamColor.Yellow:
-                    core.renderer.color = new Color(1.0f, 0.8252001f, 0.126f);
+                    //core.renderer.color = new Color(1.0f, 0.8252001f, 0.126f);
+                    atmosphere.renderer.sprite = yellowOrbit;
                     break;
 
                 case TeamColor.Green:
-                    core.renderer.color = new Color(0.2812904f, 0.699f, 0.08771764f);
+                    //core.renderer.color = new Color(0.2812904f, 0.699f, 0.08771764f);
+                    atmosphere.renderer.sprite = greenOrbit;
                     break;
             }
         }
