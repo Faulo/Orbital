@@ -68,8 +68,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: ShootMissile
-    clip: {fileID: 8300000, guid: afa3c309d331f4d4881b2d55ee61dc88, type: 3}
+  - name: ShootMissile1
+    clip: {fileID: 8300000, guid: 3120d849b93044cf495cda96dd09e2da, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0
@@ -96,5 +96,29 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7723c353e953f48cfb12d11527c03358, type: 3}
     volume: 0.75
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Orbital Theme
+    clip: {fileID: 8300000, guid: 1e17a6656f5934eb08c5110f21b29ca8, type: 3}
+    volume: 0.42
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Menu Theme
+    clip: {fileID: 8300000, guid: 6485bbd5db8ae477bbb10015b33b55a6, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Shoot Missle2
+    clip: {fileID: 8300000, guid: d81cf22a6a957498ead1244b5a6d2fe3, type: 3}
+    volume: 0.3
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Missle Hit
+    clip: {fileID: 8300000, guid: 9d714e45b59a2462eb2d34a74091eeac, type: 3}
+    volume: 0.5
+    pitch: 0
     loop: 0
     source: {fileID: 0}
