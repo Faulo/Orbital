@@ -52,10 +52,9 @@ public class ScoreManager : MonoBehaviour {
                     break;
             }
         }
-
         if (pointsTeamYellow >= pointsToWin)
-            GetComponent<GameManager>().GameOver(1);
+            GetComponent<GameManager>().GameOver(TeamColor.Yellow);
         if (pointsTeamGreen >= pointsToWin)
-            GetComponent<GameManager>().GameOver(2);
+            GetComponent<GameManager>().GameOver(TeamColor.Green);
     }
 }

@@ -10,4 +10,5 @@ public class TeamConfig {
     public Color capturingColor;
     public Sprite missile;
     public Image scoreBar;
+    public RectTransform winScreen;
 }

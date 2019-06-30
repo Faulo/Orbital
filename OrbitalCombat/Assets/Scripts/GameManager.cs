@@ -5,11 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(ScoreManager))]
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
-    [Range(2,4)]
+    [Range(2, 4)]
     public int numberOfPlayers;
 
     public GameObject playerPrefab;
@@ -27,17 +26,16 @@ public class GameManager : MonoBehaviour
 
     private GameObject mapParent;
     private Planet[] planets;
+    
 
-    private void Awake ()
-    {
+    private void Awake() {
         if (!instance)
             instance = this;
         else if (instance != this)
             Destroy(this);
     }
 
-    private void Start()
-    {
+    private void Start() {
         mapParent = Instantiate(mapPresets[Random.Range(0, mapPresets.Length)], Vector3.zero, Quaternion.identity);
         planets = mapParent.GetComponentsInChildren<Planet>();
 
@@ -62,23 +60,12 @@ public class GameManager : MonoBehaviour
         GetComponent<ScoreManager>().Init(mapParent);
     }
 
-    public void GameOver (int winningTeam)
-    {
+    public void GameOver(TeamColor winningTeam) {
         Time.timeScale = 0.1f;
-
-        if (winningTeam == 1)
-        {
-            Debug.Log("Team Yellow wins!");
-        }
-        else if (winningTeam == 2)
-        {
-            Debug.Log("Team Green wins!");
-        }
-
+        GetTeam(winningTeam).winScreen.gameObject.SetActive(true);
         Invoke("NextLevel", 0.5f);
     }
     void NextLevel() {
-        Debug.Log("Next");
         Time.timeScale = 1;
         SceneManager.LoadScene("Game");
     }
