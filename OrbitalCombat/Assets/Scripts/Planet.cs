@@ -21,6 +21,8 @@ public class Planet : MonoBehaviour, ICapturable {
     public float gravityRadius = 0;
     [SerializeField, Range(0, 10000)]
     public float coreDensity = 0;
+    [SerializeField]
+    private AnimationCurve worthOverMass = default;
 
     public float coreMass {
         get => coreRadius * coreDensity;
@@ -30,6 +32,7 @@ public class Planet : MonoBehaviour, ICapturable {
         set {
             if (belongsToCache != value) {
                 belongsToCache = value;
+                particles.team = value;
                 switch (belongsToCache) {
                     case TeamColor.Nobody:
                         atmosphere.renderer.sprite = nobodyOrbit;
@@ -55,13 +58,18 @@ public class Planet : MonoBehaviour, ICapturable {
 
     private TeamColor belongsToCache;
 
-    public float worth => coreRadius;
+    public float worth => worthOverMass.Evaluate(coreMass);
 
-    Core core => GetComponentInChildren<Core>();
-    Atmosphere atmosphere => GetComponentInChildren<Atmosphere>();
-    Gravity gravity => GetComponentInChildren<Gravity>();
+    private Core core;
+    private Atmosphere atmosphere;
+    private Gravity gravity;
+    private ScoreParticles particles;
 
     void Start() {
+        core = GetComponentInChildren<Core>();
+        atmosphere = GetComponentInChildren<Atmosphere>();
+        gravity = GetComponentInChildren<Gravity>();
+        particles = GetComponentInChildren<ScoreParticles>();
     }
 
     void Update() {

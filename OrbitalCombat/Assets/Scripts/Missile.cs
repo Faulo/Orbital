@@ -48,6 +48,7 @@ public class Missile : MonoBehaviour {
         transform.Translate(velocity * Time.fixedDeltaTime, Space.World);
     }
     public void Explode() {
+        AudioManager.instance.PlayOneShot("Missle Hit");
         var explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         explosion.transform.localScale = Vector3.one * size;
         Destroy(gameObject);

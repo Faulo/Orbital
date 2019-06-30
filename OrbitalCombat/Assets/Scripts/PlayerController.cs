@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
     private IEnumerator ShootRocketRoutine(Vector3 direction) {
-        AudioManager.instance.PlayOneShot("ShootMissile");
+        AudioManager.instance.PlayOneShot("ShootMissile" + team.color);
         var missile = Instantiate(missilePrefab, transform.position + direction.normalized, Quaternion.identity).GetComponent<Missile>();
         missile.teamColor = teamColor;
         missile.sprite = team.missile;

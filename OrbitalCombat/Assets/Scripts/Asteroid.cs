@@ -36,14 +36,6 @@ public class Asteroid : MonoBehaviour, IDamageable {
         Explode();
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        /*
-        var player = collision.gameObject.GetComponentInParent<PlayerController>();
-        if (player) {
-            player.Explode();
-            Explode();
-            return;
-        }
-        //*/
         var planet = collision.gameObject.GetComponentInParent<Planet>();
         if (planet) {
             mergingRoutine = StartCoroutine(MergeWithPlanetRoutine(planet));
