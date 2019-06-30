@@ -23,6 +23,9 @@ public class Missile : MonoBehaviour {
         this.velocity += new Vector3(velocity.x, velocity.y, 0);
         //rigidbody.AddForce(velocity, ForceMode2D.Impulse);
     }
+    public void AddVelocity(Vector3 velocity) {
+        this.velocity += velocity;
+    }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.rigidbody) {
             collision.rigidbody.AddForce(transform.up * rigidbody.mass, ForceMode2D.Impulse);

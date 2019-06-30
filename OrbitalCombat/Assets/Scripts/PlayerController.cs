@@ -58,9 +58,7 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         Boost();
-        if (Input.GetButton("Fire" + inputId) && shootingRocket == null) {
-            shootingRocket = StartCoroutine(ShootRocketRoutine());
-        }
+        Shoot();
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -76,7 +74,7 @@ public class PlayerController : MonoBehaviour {
     private void Boost() {
         var input = new Vector2(Input.GetAxis("Horizontal" + inputId), Input.GetAxis("Vertical" + inputId));
 
-        if (input.magnitude > 0) {
+        if (input.magnitude > Mathf.Epsilon) {
             float inputAngle = Vector2.SignedAngle(Vector2.up, input);
             Quaternion rot = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(inputAngle, Vector3.forward), rotationSpeed);
 
@@ -87,13 +85,24 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private IEnumerator ShootRocketRoutine() {
+    private void Shoot() {
+        if (shootingRocket == null) {
+            var input = new Vector3(Input.GetAxis("Horizontal"+ inputId+"b"), Input.GetAxis("Vertical"+ inputId+"b"), 0);
+            if (input.magnitude > 0.5f) {
+                shootingRocket = StartCoroutine(ShootRocketRoutine(input));
+            } else if (Input.GetButton("Fire" + inputId)) {
+                shootingRocket = StartCoroutine(ShootRocketRoutine(transform.up));
+            }
+        }
+    }
+    private IEnumerator ShootRocketRoutine(Vector3 direction) {
         AudioManager.instance.Play("ShootMissile");
-        var missile = Instantiate(missilePrefab, transform.position + transform.up.normalized, transform.rotation).GetComponent<Missile>();
+        var missile = Instantiate(missilePrefab, transform.position + direction.normalized, Quaternion.identity).GetComponent<Missile>();
         missile.teamColor = teamColor;
         missile.sprite = team.missile;
-        //missile.AddVelocity(rigidbody.velocity);
-        missile.AddVelocity(missileLaunchSpeed * transform.up);
+        float inputAngle = Vector2.SignedAngle(Vector2.up, direction);
+        missile.transform.rotation = Quaternion.AngleAxis(inputAngle, Vector3.forward);
+        missile.AddVelocity(missileLaunchSpeed * missile.transform.up);
         yield return new WaitForSeconds(missileInterval);
         shootingRocket = null;
     }
