@@ -70,7 +70,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShootMissile1
     clip: {fileID: 8300000, guid: 7c8f7d3ef1dd9463cab96334d1a0e413, type: 3}
-    volume: 0.3
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -88,13 +88,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PlanetCaptureYellow
     clip: {fileID: 8300000, guid: 133969966a305487c996fe7e1ed3a0ef, type: 3}
-    volume: 0.75
+    volume: 0.65
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PlanetCaptureGreen
     clip: {fileID: 8300000, guid: 7723c353e953f48cfb12d11527c03358, type: 3}
-    volume: 0.75
+    volume: 0.65
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Shoot Missle2
     clip: {fileID: 8300000, guid: d81cf22a6a957498ead1244b5a6d2fe3, type: 3}
-    volume: 0.3
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
