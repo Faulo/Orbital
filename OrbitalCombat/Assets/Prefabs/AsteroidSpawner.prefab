@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5441123375524599943, guid: 1cc33c9f329ea419a953ed371bf843fa, type: 3}
+  - {fileID: 5441123375524599943, guid: 03547928f80174911bbfe560e3ac442d, type: 3}
+  - {fileID: 5441123375524599943, guid: 73fb62f6c936c41f1b4cf4ed0e50c71b, type: 3}
+  - {fileID: 5441123375524599943, guid: 2d54ba9f80f7f441c805e22a3d8ddae9, type: 3}
   asteroidInterval: 1
   asteroidLaunchSpeed: 1
   asteroidSizeDistribution:
