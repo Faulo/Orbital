@@ -86,7 +86,6 @@ MonoBehaviour:
   explosionPrefab: {fileID: 411501226406671284, guid: 19f592f2bda81e54f8fa05e88efff3d3,
     type: 3}
   stopSpeed: 0.1
-  size: 1
 --- !u!1 &7235100207788942835
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 897574605
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7bd4062ddb9ef406ba2731a81a8169f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bde81c7cc37b4f909f3dbeb5cf0c9c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour {
     [SerializeField]
-    private GameObject asteroidPrefab = default;
+    private GameObject[] asteroidPrefabs = default;
     [SerializeField, Range(0, 10)]
     private float asteroidInterval = 1;
     [SerializeField, Range(0, 10)]
@@ -34,7 +34,7 @@ public class AsteroidSpawner : MonoBehaviour {
     }
 
     private void Spawn() {
-        var asteroid = Instantiate(asteroidPrefab, RandomPosition(), Quaternion.identity).GetComponent<Asteroid>();
+        var asteroid = Instantiate(asteroidPrefabs.RandomElement(), RandomPosition(), Quaternion.identity).GetComponent<Asteroid>();
         asteroid.size = RandomSize();
         asteroid.LaunchTowards(Vector3.zero, asteroidLaunchSpeed);
     }

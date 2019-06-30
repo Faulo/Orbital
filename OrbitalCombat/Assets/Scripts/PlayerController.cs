@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private GameObject missilePrefab = default;
+    [SerializeField, Range(0, 1)]
+    private float missileTreshold = 0;
     [SerializeField, Range(0, 5)]
     private float missileInterval = 1;
     [SerializeField, Range(0, 100)]
@@ -88,7 +90,9 @@ public class PlayerController : MonoBehaviour {
     private void Shoot() {
         if (shootingRocket == null) {
             var input = new Vector3(Input.GetAxis("Horizontal"+ inputId+"b"), Input.GetAxis("Vertical"+ inputId+"b"), 0);
-            if (input.magnitude > 0.5f) {
+            
+            if (input.magnitude > missileTreshold) {
+                Debug.Log(input);
                 shootingRocket = StartCoroutine(ShootRocketRoutine(input));
             } else if (Input.GetButton("Fire" + inputId)) {
                 shootingRocket = StartCoroutine(ShootRocketRoutine(transform.up));
