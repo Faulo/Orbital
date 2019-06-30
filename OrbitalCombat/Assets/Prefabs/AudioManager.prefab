@@ -69,7 +69,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: ShootMissileYellow
-    clip: {fileID: 8300000, guid: 3120d849b93044cf495cda96dd09e2da, type: 3}
+    clip: {fileID: 8300000, guid: 1e429ebe435094793920600e206e8ac3, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: ShootMissileGreen
-    clip: {fileID: 8300000, guid: d81cf22a6a957498ead1244b5a6d2fe3, type: 3}
+    clip: {fileID: 8300000, guid: 1e429ebe435094793920600e206e8ac3, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
