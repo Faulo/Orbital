@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,22 +28,31 @@ public class Planet : MonoBehaviour, ICapturable {
     public TeamColor belongsTo {
         get => belongsToCache;
         set {
-            belongsToCache = value;
-            switch (belongsToCache) {
-                case TeamColor.Nobody:
-                    atmosphere.renderer.sprite = nobodyOrbit;
-                    break;
-                case TeamColor.Yellow:
-                    AudioManager.instance.Play("YellowPlanetCapture");
-                    atmosphere.renderer.sprite = yellowOrbit;
-                    break;
-                case TeamColor.Green:
-                    AudioManager.instance.Play("GreenPlanetCapture");
-                    atmosphere.renderer.sprite = greenOrbit;
-                    break;
+            if (belongsToCache != value) {
+                belongsToCache = value;
+                switch (belongsToCache) {
+                    case TeamColor.Nobody:
+                        atmosphere.renderer.sprite = nobodyOrbit;
+                        break;
+                    case TeamColor.Yellow:
+                        AudioManager.instance.Play("PlanetCaptureYellow");
+                        atmosphere.renderer.sprite = yellowOrbit;
+                        break;
+                    case TeamColor.Green:
+                        AudioManager.instance.Play("PlanetCaptureGreen");
+                        atmosphere.renderer.sprite = greenOrbit;
+                        break;
+                }
             }
         }
     }
+
+    public void GrowBy(float size) {
+        coreRadius += size / 10;
+        atmosphereRadius += size / 10;
+        gravityRadius += size / 10;
+    }
+
     private TeamColor belongsToCache;
 
     public float worth => coreRadius;
@@ -55,8 +65,6 @@ public class Planet : MonoBehaviour, ICapturable {
     }
 
     void Update() {
-
-#if UNITY_EDITOR
         if (atmosphereRadius < coreRadius) {
             atmosphereRadius = coreRadius;
         }
@@ -72,6 +80,5 @@ public class Planet : MonoBehaviour, ICapturable {
         //shape.radiusThickness = 1 - coreRadius / atmosphereRadius;
 
         gravity.transform.localScale = Vector3.one * gravityRadius / gravity.collider.radius;
-#endif
     }
 }

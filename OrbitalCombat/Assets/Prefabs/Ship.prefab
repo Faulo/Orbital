@@ -83,15 +83,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0863d327d789b9144a4fe36c257d0aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team:
-    color: 0
-    capturingColor: {r: 0, g: 0, b: 0, a: 0}
+  configCache:
+    inputId: 0
+    team: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
+    spaceship: {fileID: 0}
+    spawn: {fileID: 0}
+  explosionPrefab: {fileID: 411501226406671284, guid: 6c296bf624089a64983a5e06e4ba751c,
+    type: 3}
   maxThrust: 5
   rotationSpeed: 10
   missilePrefab: {fileID: 1189826777597917952, guid: 7aad9210dee4e2e4cb61a6c3fcb2d687,
     type: 3}
   missileInterval: 0.2
   missileLaunchSpeed: 10
+  respawnTime: 3
 --- !u!1 &1412075990459041044
 GameObject:
   m_ObjectHideFlags: 0

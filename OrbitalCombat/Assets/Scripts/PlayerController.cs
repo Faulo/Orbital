@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable {
+public class PlayerController : MonoBehaviour {
     public PlayerConfig config {
         get => configCache;
         set {
@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour, IDamageable {
     public PlayerConfig configCache;
     public TeamConfig team { get; private set; }
     public TeamColor teamColor => team.color;
+
+    [SerializeField]
+    private GameObject explosionPrefab = default;
 
     private int inputId;
 
@@ -37,7 +40,10 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
     private new Rigidbody2D rigidbody;
     private Coroutine shootingRocket;
-    private Coroutine dying;
+
+    [SerializeField, Range(0, 10)]
+    private int respawnTime = 1;
+
     public bool isAlive { get; private set; } = true;
 
     void Start() {
@@ -45,6 +51,9 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     void FixedUpdate() {
+        if (!isAlive) {
+            return;
+        }
         Boost();
         if (Input.GetButton("Fire" + inputId) && shootingRocket == null) {
             shootingRocket = StartCoroutine(ShootRocketRoutine());
@@ -66,25 +75,30 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     private IEnumerator ShootRocketRoutine() {
+        AudioManager.instance.Play("ShootMissile");
         var missile = Instantiate(missilePrefab, transform.position + transform.up.normalized, transform.rotation).GetComponent<Missile>();
         missile.teamColor = teamColor;
         missile.sprite = team.missile;
-        missile.AddVelocity(rigidbody.velocity);
+        //missile.AddVelocity(rigidbody.velocity);
         missile.AddVelocity(missileLaunchSpeed * transform.up);
         yield return new WaitForSeconds(missileInterval);
         shootingRocket = null;
     }
 
-    public void TakeDamage(float value) {
-        if (dying == null) {
-            dying = StartCoroutine(DieRoutine());
+    public void Explode() {
+        if (isAlive) {
+            StartCoroutine(DieRoutine());
         }
     }
 
     private IEnumerator DieRoutine() {
         isAlive = false;
+        var explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+        var main = explosion.GetComponent<ParticleSystem>().main;
+        main.startColor = color;
         transform.position = Vector3.one * 1000;
-        yield return new WaitForSeconds(1);
+        AudioManager.instance.Play("ExplodingShip");
+        yield return new WaitForSeconds(respawnTime);
         Respawn();
     }
     private void Respawn() {
@@ -92,6 +106,5 @@ public class PlayerController : MonoBehaviour, IDamageable {
         transform.position = config.spawn.position;
         transform.rotation = config.spawn.rotation;
         isAlive = true;
-        dying = null;
     }
 }

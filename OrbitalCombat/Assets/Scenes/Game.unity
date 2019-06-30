@@ -34008,8 +34008,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 5441123375524599943, guid: 84ee2c12c397465469920cd2e9fd2c4a,
     type: 3}
-  asteroidInterval: 1
+  asteroidInterval: 0.5
   asteroidLaunchSpeed: 2
+  asteroidSizeDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.1
+      inSlope: 2
+      outSlope: 0.8
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.5
+      inSlope: -0.055463582
+      outSlope: -0.055463582
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.1
+      inSlope: -0.8
+      outSlope: -2.0371866
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.06840706
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2014637486
 GameObject:
   m_ObjectHideFlags: 0
@@ -34040,28 +34073,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: YellowPlanetCapture
-    clip: {fileID: 8300000, guid: 133969966a305487c996fe7e1ed3a0ef, type: 3}
+  - name: SectionCapture1
+    clip: {fileID: 8300000, guid: 620955d691f8848ec82b0ab1fc532821, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: YellowSectionCapture
+  - name: SectionCapture2
+    clip: {fileID: 8300000, guid: 02b47ce2b25d34566941f5a7da8f6383, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SectionCapture3
     clip: {fileID: 8300000, guid: 3580f7136b6a04e49822b73ad83bb7fd, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: GreenPlanetCapture
-    clip: {fileID: 8300000, guid: 7723c353e953f48cfb12d11527c03358, type: 3}
-    volume: 1
+  - name: SectionCapture4
+    clip: {fileID: 8300000, guid: af3d0974b287d4db3ba712aa1814deb6, type: 3}
+    volume: 0.373
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: GreenSectionCapture
-    clip: {fileID: 8300000, guid: 02b47ce2b25d34566941f5a7da8f6383, type: 3}
-    volume: 1
+  - name: ShootMissile
+    clip: {fileID: 8300000, guid: afa3c309d331f4d4881b2d55ee61dc88, type: 3}
+    volume: 0.3
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ExplodingShip
+    clip: {fileID: 8300000, guid: a36742efd53e440a9a8d88769416c9eb, type: 3}
+    volume: 1
+    pitch: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: ExplodingAsteroid
+    clip: {fileID: 8300000, guid: afa3c309d331f4d4881b2d55ee61dc88, type: 3}
+    volume: 0.5
+    pitch: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: PlanetCaptureYellow
+    clip: {fileID: 8300000, guid: 133969966a305487c996fe7e1ed3a0ef, type: 3}
+    volume: 0.75
+    pitch: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: PlanetCaptureGreen
+    clip: {fileID: 8300000, guid: 7723c353e953f48cfb12d11527c03358, type: 3}
+    volume: 0.75
+    pitch: 0.5
     loop: 0
     source: {fileID: 0}
 --- !u!4 &2014637488
@@ -34212,7 +34275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barTeamYellow: {fileID: 736386855}
   barTeamGreen: {fileID: 424436281}
-  pointsToWin: 10000
+  pointsToWin: 1000
   fillSpeed: 0.1
 --- !u!4 &2132889723
 Transform:
@@ -34275,6 +34338,8 @@ MonoBehaviour:
   - {fileID: 8711434106956970373, guid: a26328580103b754ba8bf1dee9a9a095, type: 3}
   - {fileID: 8711434106956970373, guid: be4342dbea7c46d45882d90e5dd9461d, type: 3}
   - {fileID: 8711434106956970373, guid: e844b099beaa20246ab2107ed7412b8c, type: 3}
+  - {fileID: 8711434106956970373, guid: a26328580103b754ba8bf1dee9a9a095, type: 3}
+  - {fileID: 8711434106956970373, guid: 39c925f771dc0ba4ea4aede0daf86396, type: 3}
 --- !u!1001 &7740961779273433603
 PrefabInstance:
   m_ObjectHideFlags: 0

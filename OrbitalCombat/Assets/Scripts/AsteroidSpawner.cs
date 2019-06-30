@@ -10,6 +10,8 @@ public class AsteroidSpawner : MonoBehaviour {
     private float asteroidInterval = 1;
     [SerializeField, Range(0, 10)]
     private float asteroidLaunchSpeed = 1;
+    [SerializeField]
+    private AnimationCurve asteroidSizeDistribution = default;
 
     private float asteroidTimer;
 
@@ -33,7 +35,11 @@ public class AsteroidSpawner : MonoBehaviour {
 
     private void Spawn() {
         var asteroid = Instantiate(asteroidPrefab, RandomPosition(), Quaternion.identity).GetComponent<Asteroid>();
+        asteroid.size = RandomSize();
         asteroid.LaunchTowards(Vector3.zero, asteroidLaunchSpeed);
+    }
+    private float RandomSize() {
+        return asteroidSizeDistribution.Evaluate(Random.value);
     }
     private Vector3 RandomPosition() {
         var rect = boxes.RandomElement().bounds;

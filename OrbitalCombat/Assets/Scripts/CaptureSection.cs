@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,10 +20,10 @@ public class CaptureSection : MonoBehaviour, ICapturable {
                 belongsToCache = value;
                 switch (belongsToCache) {
                     case TeamColor.Yellow:
-                        AudioManager.instance.Play("YellowSectionCapture");
+                        AudioManager.instance.Play("SectionCapture" + (Random.value > 0.5 ? "1" : "3"));
                         break;
                     case TeamColor.Green:
-                        AudioManager.instance.Play("GreenSectionCapture");
+                        AudioManager.instance.Play("SectionCapture" + (Random.value > 0.5 ? "2" : "4"));
                         break;
                 }
                 color = GameManager.instance.GetTeam(value).capturingColor;

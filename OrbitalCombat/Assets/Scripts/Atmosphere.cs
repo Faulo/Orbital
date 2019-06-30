@@ -25,14 +25,11 @@ public class Atmosphere : MonoBehaviour {
         planet = transform.parent.GetComponent<Planet>();
         lines = new CaptureSection[12];
         for (int i = 0; i < lines.Length; i++) {
-            var line = Instantiate(linePrefab).GetComponent<CaptureSection>();
-            var offset = new Vector3(Mathf.Sin(2 * Mathf.PI * i / lines.Length), Mathf.Cos(2 * Mathf.PI * i / lines.Length)) * planet.atmosphereRadius;
-            line.planet = planet;
-            line.SetPositions(transform.position, transform.position + offset);
-            line.SetWidth(planet.atmosphereRadius);
-            line.color = Color.white;
-            lines[i] = line;
+            lines[i] = Instantiate(linePrefab).GetComponent<CaptureSection>();
+            lines[i].planet = planet;
+            lines[i].color = Color.white;
         }
+        UpdateRadius(planet.atmosphereRadius);
     }
 
     void Update() {
@@ -41,6 +38,15 @@ public class Atmosphere : MonoBehaviour {
             .Distinct();
         if (teams.Count() == 1) {
             planet.belongsTo = teams.First();
+        }
+        UpdateRadius(planet.atmosphereRadius);
+    }
+    void UpdateRadius(float radius) {
+        for (int i = 0; i < lines.Length; i++) {
+            var line = lines[i];
+            var offset = new Vector3(Mathf.Sin(2 * Mathf.PI * i / lines.Length), Mathf.Cos(2 * Mathf.PI * i / lines.Length)) * radius;
+            line.SetPositions(transform.position, transform.position + offset);
+            line.SetWidth(radius);
         }
     }
 
