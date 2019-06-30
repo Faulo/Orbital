@@ -43,6 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ce75f42fad7624cbc25c0402a481b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 5441123375524599943, guid: 84ee2c12c397465469920cd2e9fd2c4a,
-    type: 3}
+  asteroidPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   asteroidInterval: 1
+  asteroidLaunchSpeed: 1
+  asteroidSizeDistribution:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

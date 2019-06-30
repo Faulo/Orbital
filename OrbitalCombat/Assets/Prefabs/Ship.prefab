@@ -81,6 +81,7 @@ MonoBehaviour:
   rotationSpeed: 10
   missilePrefab: {fileID: 1189826777597917952, guid: 7aad9210dee4e2e4cb61a6c3fcb2d687,
     type: 3}
+  missileTreshold: 0.7
   missileInterval: 0.2
   missileLaunchSpeed: 20
   respawnTime: 3

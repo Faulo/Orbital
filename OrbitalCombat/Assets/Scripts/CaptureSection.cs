@@ -34,10 +34,12 @@ public class CaptureSection : MonoBehaviour, ICapturable {
     public float worth => planet.worth;
 
     private LineRenderer line;
+    private new ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Awake() {
         line = GetComponent<LineRenderer>();
+        particleSystem = GetComponent<ParticleSystem>();
     }
 
     public void SetPositions(Vector3 start, Vector3 end) {
