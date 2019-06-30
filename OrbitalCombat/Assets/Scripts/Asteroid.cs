@@ -68,11 +68,11 @@ public class Asteroid : MonoBehaviour, IDamageable {
     public void Explode() {
         var explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         explosion.transform.localScale = Vector3.one * size;
-        AudioManager.instance.Play("ExplodingAsteroid");
+        AudioManager.instance.PlayOneShot("ExplodingAsteroid");
         Destroy(gameObject);
     }
     public void Merge() {
-        AudioManager.instance.Play("ExplodingAsteroid");
+        AudioManager.instance.PlayOneShot("ExplodingAsteroid");
         Destroy(gameObject);
     }
 }

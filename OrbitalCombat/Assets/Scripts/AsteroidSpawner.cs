@@ -15,10 +15,11 @@ public class AsteroidSpawner : MonoBehaviour {
 
     private float asteroidTimer;
 
-    private IEnumerable<BoxCollider2D> boxes => GetComponents<BoxCollider2D>();
+    private IEnumerable<BoxCollider2D> boxes;
 
     // Start is called before the first frame update
     void Start() {
+        boxes = GetComponentsInParent<BoxCollider2D>();
         if (asteroidInterval < Mathf.Epsilon) {
             asteroidInterval = Mathf.Epsilon;
         }

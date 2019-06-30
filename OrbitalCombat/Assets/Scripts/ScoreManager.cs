@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
-    public Image barTeamYellow;
-    public Image barTeamGreen;
+    private Image barTeamYellow => GameManager.instance.GetTeam(TeamColor.Yellow).scoreBar;
+    private Image barTeamGreen => GameManager.instance.GetTeam(TeamColor.Green).scoreBar;
 
     // Parameters for balancing
     [SerializeField, Range(1, 100000)]

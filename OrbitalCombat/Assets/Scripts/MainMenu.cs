@@ -3,8 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class MainMenu : MonoBehaviour
-{
+public class MainMenu : MonoBehaviour {
     public GameObject menuParent;
     public GameObject creditsParent;
     public GameObject optionsParent;
@@ -17,10 +16,6 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsButton;
     public Text[] creditsText;
 
-    public AudioClip clickSound;
-
-    private AudioSource audio;
-
     private string[] names = new string[6]
     {
         "Carl-Philipp Hellmuth",
@@ -30,40 +25,33 @@ public class MainMenu : MonoBehaviour
         "Daniel Schulz",
         "Ilona Treml"
     };
-      
-    void Start()
-    {
-        audio = GetComponent<AudioSource>();
+
+    void Start() {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
 
-    public void StartGame ()
-    {
+    public void StartGame() {
         SceneManager.LoadScene("Game");
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame() {
         Application.Quit();
     }
 
-    public void GoToCredits()
-    {
+    public void GoToCredits() {
         EventSystem.current.SetSelectedGameObject(null);
         menuParent.SetActive(false);
         creditsParent.SetActive(true);
         Shuffle(names);
-        for (int g = 0; g < names.Length; g++)
-        {
+        for (int g = 0; g < names.Length; g++) {
             creditsText[g].text = names[g];
         }
         backButtonCredits.GetComponent<Animator>().SetTrigger("Normal");
         EventSystem.current.SetSelectedGameObject(backButtonCredits);
     }
 
-    public void GoBackFromCredits()
-    {
+    public void GoBackFromCredits() {
         EventSystem.current.SetSelectedGameObject(null);
         creditsParent.SetActive(false);
         menuParent.SetActive(true);
@@ -71,8 +59,7 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(creditsButton);
     }
 
-    public void GoToOptions()
-    {
+    public void GoToOptions() {
         EventSystem.current.SetSelectedGameObject(null);
         menuParent.SetActive(false);
         optionsParent.SetActive(true);
@@ -80,8 +67,7 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(backButtonOptions);
     }
 
-    public void GoBackFromOptions()
-    {
+    public void GoBackFromOptions() {
         EventSystem.current.SetSelectedGameObject(null);
         optionsParent.SetActive(false);
         menuParent.SetActive(true);
@@ -89,10 +75,8 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(optionsButton);
     }
 
-    public void SetNumberOfPlayers ()
-    {
-        switch (playerSlider.value)
-        {
+    public void SetNumberOfPlayers() {
+        switch (playerSlider.value) {
             case 0:
                 // TODO: Set player number to two
                 Debug.Log("2 players!");
@@ -101,13 +85,11 @@ public class MainMenu : MonoBehaviour
                 // TODO: Set player number to four
                 Debug.Log("4 players!");
                 break;
-        } 
+        }
     }
 
-    private void Shuffle (string[] texts)
-    {
-        for (int t = 0; t < texts.Length; t++)
-        {
+    private void Shuffle(string[] texts) {
+        for (int t = 0; t < texts.Length; t++) {
             string tmp = texts[t];
             int r = Random.Range(t, texts.Length);
             texts[t] = texts[r];
@@ -115,8 +97,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void Click ()
-    {
-        audio.PlayOneShot(clickSound);
+    public void Click() {
+        AudioManager.instance.PlayOneShot("MenuClick");
     }
 }

@@ -18,12 +18,13 @@ public class CaptureSection : MonoBehaviour, ICapturable {
         set {
             if (belongsToCache != value) {
                 belongsToCache = value;
+                particles.team = value;
                 switch (belongsToCache) {
                     case TeamColor.Yellow:
-                        AudioManager.instance.Play("SectionCapture" + (Random.value > 0.5 ? "1" : "3"));
+                        AudioManager.instance.PlayOneShot("SectionCapture" + (Random.value > 0.5 ? "1" : "3"));
                         break;
                     case TeamColor.Green:
-                        AudioManager.instance.Play("SectionCapture" + (Random.value > 0.5 ? "2" : "4"));
+                        AudioManager.instance.PlayOneShot("SectionCapture" + (Random.value > 0.5 ? "2" : "4"));
                         break;
                 }
                 color = GameManager.instance.GetTeam(value).capturingColor;
@@ -34,17 +35,18 @@ public class CaptureSection : MonoBehaviour, ICapturable {
     public float worth => planet.worth;
 
     private LineRenderer line;
-    private new ParticleSystem particleSystem;
+    private ScoreParticles particles;
 
     // Start is called before the first frame update
     void Awake() {
         line = GetComponent<LineRenderer>();
-        particleSystem = GetComponent<ParticleSystem>();
+        particles = GetComponentInChildren<ScoreParticles>();
     }
 
     public void SetPositions(Vector3 start, Vector3 end) {
         line.SetPosition(1, start);
         line.SetPosition(0, end);
+        particles.transform.position = (start + end) / 2;
     }
     public void SetWidth(float width) {
         line.widthMultiplier = width;

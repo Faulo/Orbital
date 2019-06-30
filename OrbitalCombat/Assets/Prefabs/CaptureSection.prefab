@@ -28,7 +28,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4285592782345118829}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -148,3 +149,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a6832b1b4f9d24da0a41ae0a5e534c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2684900377778944879
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2947839396472613213}
+    m_Modifications:
+    - target: {fileID: 2618578727296130817, guid: cfed7d552512f284ba9728c449e017a6,
+        type: 3}
+      propertyPath: m_Name
+      value: ScoreParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178569345305403138, guid: cfed7d552512f284ba9728c449e017a6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178569345305403138, guid: cfed7d552512f284ba9728c449e017a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178569345305403138, guid: cfed7d552512f284ba9728c449e017a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178569345305403138, guid: cfed7d552512f284ba9728c449e017a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cfed7d552512f284ba9728c449e017a6, type: 3}
+--- !u!4 &4285592782345118829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2178569345305403138, guid: cfed7d552512f284ba9728c449e017a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2684900377778944879}
+  m_PrefabAsset: {fileID: 0}

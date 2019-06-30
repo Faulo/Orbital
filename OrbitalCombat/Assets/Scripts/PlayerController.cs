@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour {
             var input = new Vector3(Input.GetAxis("Horizontal"+ inputId+"b"), Input.GetAxis("Vertical"+ inputId+"b"), 0);
             
             if (input.magnitude > missileTreshold) {
-                Debug.Log(input);
                 shootingRocket = StartCoroutine(ShootRocketRoutine(input));
             } else if (Input.GetButton("Fire" + inputId)) {
                 shootingRocket = StartCoroutine(ShootRocketRoutine(transform.up));
@@ -100,7 +99,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
     private IEnumerator ShootRocketRoutine(Vector3 direction) {
-        AudioManager.instance.Play("ShootMissile");
+        AudioManager.instance.PlayOneShot("ShootMissile");
         var missile = Instantiate(missilePrefab, transform.position + direction.normalized, Quaternion.identity).GetComponent<Missile>();
         missile.teamColor = teamColor;
         missile.sprite = team.missile;
@@ -123,7 +122,7 @@ public class PlayerController : MonoBehaviour {
         var main = explosion.GetComponent<ParticleSystem>().main;
         main.startColor = color;
         transform.position = Vector3.one * 1000;
-        AudioManager.instance.Play("ExplodingShip");
+        AudioManager.instance.PlayOneShot("ExplodingShip");
         yield return new WaitForSeconds(respawnTime);
         Respawn();
     }
