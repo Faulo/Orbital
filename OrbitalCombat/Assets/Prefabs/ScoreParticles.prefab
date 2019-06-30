@@ -50,13 +50,13 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0.09735104
-      outSlope: 0.09735104
+      value: 0.1
+      inSlope: 0.07185435
+      outSlope: 0.07185435
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.026586622
+      outWeight: 0.036020584
     - serializedVersion: 3
       time: 10
       value: 0.5
@@ -4745,7 +4745,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6531f9fe61f49ca44b8e97fe3462fdfd, type: 2}
+  - {fileID: 2100000, guid: f8260dfdd4ca50f4e8924265169271d0, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

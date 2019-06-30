@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4761765200520287378}
   - component: {fileID: 4761765200520287373}
+  - component: {fileID: 2844208680039293349}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -70,7 +71,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShootMissileYellow
     clip: {fileID: 8300000, guid: 1e429ebe435094793920600e206e8ac3, type: 3}
-    volume: 0.5
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -112,7 +113,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShootMissileGreen
     clip: {fileID: 8300000, guid: 1e429ebe435094793920600e206e8ac3, type: 3}
-    volume: 0.5
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -128,3 +129,11 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+--- !u!81 &2844208680039293349
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761765200520287372}
+  m_Enabled: 1

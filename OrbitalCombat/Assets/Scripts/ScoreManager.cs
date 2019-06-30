@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,6 @@ public class ScoreManager : MonoBehaviour {
     private int pointsToWin = 100;
 
     // Variables
-    private IEnumerable<ICapturable> capturables;
     private float pointsTeamYellow; // Team Index: 1
     private float pointsTeamGreen; // Team Index: 2
 
@@ -21,8 +21,6 @@ public class ScoreManager : MonoBehaviour {
     private float fillSpeed = 1f;
 
     public void Init(GameObject mapParent) {
-        capturables = mapParent.GetComponentsInChildren<ICapturable>();
-
         pointsTeamYellow = 0;
         pointsTeamGreen = 0;
 
@@ -33,6 +31,7 @@ public class ScoreManager : MonoBehaviour {
         InvokeRepeating("UpdateScore", 1.0f, 1.0f);
     }
     private void Start() {
+        
     }
     private void Update() {
         barTeamYellow.fillAmount = Mathf.Lerp(barTeamYellow.fillAmount, pointsTeamYellow * fillPerPoint, fillSpeed);
@@ -41,6 +40,8 @@ public class ScoreManager : MonoBehaviour {
 
 
     private void UpdateScore() {
+        var capturables = FindObjectsOfType<GameObject>()
+            .SelectMany(obj => obj.GetComponents<ICapturable>());
         foreach (var capturable in capturables) {
             switch (capturable.belongsTo) {
                 case TeamColor.Yellow:

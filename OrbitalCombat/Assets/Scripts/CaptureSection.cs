@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CaptureSection : MonoBehaviour, ICapturable {
-    public Planet planet { get; set; }
     public Color color {
         set {
             line.startColor = new Color(value.r, value.g, value.b, line.startColor.a);
@@ -32,7 +31,7 @@ public class CaptureSection : MonoBehaviour, ICapturable {
         }
     }
     private TeamColor belongsToCache;
-    public float worth => planet.worth;
+    public float worth { get; set; }
 
     private LineRenderer line;
     private ScoreParticles particles;

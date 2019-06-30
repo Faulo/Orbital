@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.Collections;
+using System;
 
 public class MainMenu : MonoBehaviour {
     public GameObject menuParent;
@@ -26,13 +28,22 @@ public class MainMenu : MonoBehaviour {
         "Ilona Treml"
     };
 
+    private int numberOfPlayers => playerSlider.value == 0 ? 2 : 4;
+
     void Start() {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
 
     public void StartGame() {
-        SceneManager.LoadScene("Game");
+        StartCoroutine(ChangeScene(
+            "Game",
+            "Menu",
+            () => {
+                GameManager.instance.numberOfPlayers = numberOfPlayers;
+            }
+        ));
+        //SceneManager.LoadScene("Game");
     }
 
     public void QuitGame() {
@@ -76,22 +87,12 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void SetNumberOfPlayers() {
-        switch (playerSlider.value) {
-            case 0:
-                // TODO: Set player number to two
-                Debug.Log("2 players!");
-                break;
-            case 1:
-                // TODO: Set player number to four
-                Debug.Log("4 players!");
-                break;
-        }
     }
 
     private void Shuffle(string[] texts) {
         for (int t = 0; t < texts.Length; t++) {
             string tmp = texts[t];
-            int r = Random.Range(t, texts.Length);
+            int r = UnityEngine.Random.Range(t, texts.Length);
             texts[t] = texts[r];
             texts[r] = tmp;
         }
@@ -99,5 +100,15 @@ public class MainMenu : MonoBehaviour {
 
     public void Click() {
         AudioManager.instance.PlayOneShot("MenuClick");
+    }
+
+    public static IEnumerator ChangeScene(string newSceneName, string oldSceneName, Action postLoad) {
+        yield return SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName));
+
+        postLoad();
+
+        yield return new WaitForEndOfFrame();
+        SceneManager.UnloadSceneAsync(oldSceneName);
     }
 }

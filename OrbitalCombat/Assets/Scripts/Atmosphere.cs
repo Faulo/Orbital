@@ -26,8 +26,8 @@ public class Atmosphere : MonoBehaviour {
         lines = new CaptureSection[12];
         for (int i = 0; i < lines.Length; i++) {
             lines[i] = Instantiate(linePrefab).GetComponent<CaptureSection>();
-            lines[i].planet = planet;
             lines[i].color = Color.white;
+            lines[i].worth = planet.worth / lines.Length;
         }
         UpdateRadius(planet.atmosphereRadius);
     }
@@ -54,7 +54,7 @@ public class Atmosphere : MonoBehaviour {
         //Debug.Log(collision.name);
         if (collision.attachedRigidbody) {
             var todo = Vector3.zero;
-            float dist = Vector2.Distance(transform.position, collision.transform.position) - planet.coreRadius;
+            float dist = Vector2.Distance(transform.position, collision.attachedRigidbody.transform.position) - planet.coreRadius;
             float t = dist / (planet.atmosphereRadius - planet.coreRadius);
             collision.attachedRigidbody.drag = dragOverDistance.Evaluate(t) * maxDrag;
 

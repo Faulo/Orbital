@@ -50,9 +50,11 @@ public class PlayerController : MonoBehaviour {
 
     public bool isAlive { get; private set; } = true;
 
+    private new ParticleSystem particleSystem;
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
+        particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     void FixedUpdate() {
@@ -75,6 +77,9 @@ public class PlayerController : MonoBehaviour {
 
     private void Boost() {
         var input = new Vector2(Input.GetAxis("Horizontal" + inputId), Input.GetAxis("Vertical" + inputId));
+
+        var emission = particleSystem.emission;
+        emission.rateOverTime = 500 * input.magnitude;
 
         if (input.magnitude > Mathf.Epsilon) {
             float inputAngle = Vector2.SignedAngle(Vector2.up, input);

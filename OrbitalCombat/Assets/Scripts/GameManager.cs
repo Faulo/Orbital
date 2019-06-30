@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(ScoreManager))]
 public class GameManager : MonoBehaviour
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver (int winningTeam)
     {
-        Time.timeScale = 0.0f;
+        Time.timeScale = 0.1f;
 
         if (winningTeam == 1)
         {
@@ -73,5 +74,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Team Green wins!");
         }
+
+        Invoke("NextLevel", 0.5f);
+    }
+    void NextLevel() {
+        Debug.Log("Next");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Game");
     }
 }
