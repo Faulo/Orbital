@@ -34684,6 +34684,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6650606734006138351, guid: 8cb08e399fa71f145b547eadfe304475,
+        type: 3}
+      propertyPath: asteroidSizeDistribution.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6650606734006138351, guid: 8cb08e399fa71f145b547eadfe304475,
+        type: 3}
+      propertyPath: asteroidSizeDistribution.m_Curve.Array.data[1].value
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6650606734006138351, guid: 8cb08e399fa71f145b547eadfe304475,
+        type: 3}
+      propertyPath: asteroidSizeDistribution.m_Curve.Array.data[2].inSlope
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb08e399fa71f145b547eadfe304475, type: 3}
 --- !u!1 &2132889721

@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 5441123375524599943, guid: 03547928f80174911bbfe560e3ac442d, type: 3}
   - {fileID: 5441123375524599943, guid: 73fb62f6c936c41f1b4cf4ed0e50c71b, type: 3}
   - {fileID: 5441123375524599943, guid: 2d54ba9f80f7f441c805e22a3d8ddae9, type: 3}
-  asteroidInterval: 1
+  asteroidInterval: 0.5
   asteroidLaunchSpeed: 1
   asteroidSizeDistribution:
     serializedVersion: 2
@@ -57,14 +57,14 @@ MonoBehaviour:
       time: 0
       value: 0.1
       inSlope: 2
-      outSlope: 0.8
+      outSlope: 1.1999999
       tangentMode: 69
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 0.5
-      value: 0.5
+      value: 0.7
       inSlope: -0.055463582
       outSlope: -0.055463582
       tangentMode: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0.1
-      inSlope: -0.8
+      inSlope: -1.1999999
       outSlope: -2.0371866
       tangentMode: 69
       weightedMode: 0
