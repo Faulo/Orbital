@@ -34118,13 +34118,13 @@ MonoBehaviour:
   - name: PlanetCaptureYellow
     clip: {fileID: 8300000, guid: 133969966a305487c996fe7e1ed3a0ef, type: 3}
     volume: 0.75
-    pitch: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PlanetCaptureGreen
     clip: {fileID: 8300000, guid: 7723c353e953f48cfb12d11527c03358, type: 3}
     volume: 0.75
-    pitch: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!4 &2014637488

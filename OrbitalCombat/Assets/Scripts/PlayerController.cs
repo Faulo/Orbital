@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private GameObject explosionPrefab = default;
+    [SerializeField, Range(0, 10)]
+    private float explosionSpeed = 1;
 
     private int inputId;
 
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour {
     private GameObject missilePrefab = default;
     [SerializeField, Range(0, 5)]
     private float missileInterval = 1;
-    [SerializeField, Range(0, 10)]
+    [SerializeField, Range(0, 100)]
     private float missileLaunchSpeed = 1;
 
     private new Rigidbody2D rigidbody;
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour {
     private int respawnTime = 1;
 
     public bool isAlive { get; private set; } = true;
+
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -57,6 +60,16 @@ public class PlayerController : MonoBehaviour {
         Boost();
         if (Input.GetButton("Fire" + inputId) && shootingRocket == null) {
             shootingRocket = StartCoroutine(ShootRocketRoutine());
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.otherCollider.gameObject.layer == LayerMask.GetMask("Border")) {
+            return;
+        }
+        var impulse = Vector3.Dot(collision.GetContact(0).normal, collision.relativeVelocity);
+        if (impulse > explosionSpeed) {
+            Explode();
         }
     }
 

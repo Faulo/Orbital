@@ -21,6 +21,9 @@ public class PlayerIndicator : MonoBehaviour {
 
     void Update()
     {
+        if (!player.isAlive) {
+            gameObject.SetActive(false);
+        }
         icon.rotation = player.transform.rotation;
 
         if (player.transform.position.y > verticalBorder)
