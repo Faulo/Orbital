@@ -1,5 +1,4 @@
-﻿using UnityEngine.Audio;
-using System;
+﻿using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -10,9 +9,9 @@ public class AudioManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Awake() {
-        if (instance == null)
+        if (instance == null) {
             instance = this;
-        else {
+        } else {
             Destroy(gameObject);
             return;
         }

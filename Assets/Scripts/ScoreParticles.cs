@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(ParticleSystem))]
@@ -20,19 +18,19 @@ public class ScoreParticles : MonoBehaviour {
             bar = team.scoreBar;
         }
     }
-    private new ParticleSystem particleSystem;
-    private ParticleSystem.Particle[] particles;
-    private Image bar;
+    new ParticleSystem particleSystem;
+    ParticleSystem.Particle[] particles;
+    Image bar;
 
     [SerializeField]
-    private AnimationCurve sizeOverWorth = default;
+    AnimationCurve sizeOverWorth = default;
 
     void Awake() {
         particleSystem = GetComponent<ParticleSystem>();
         particles = new ParticleSystem.Particle[particleSystem.main.maxParticles];
     }
 
-    private void Start() {
+    void Start() {
         var parent = GetComponentInParent<ICapturable>();
         var main = particleSystem.main;
         main.startSize = sizeOverWorth.Evaluate(parent.worth);

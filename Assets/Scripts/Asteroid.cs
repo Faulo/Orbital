@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Asteroid : MonoBehaviour, IDamageable {
     [SerializeField]
-    private GameObject explosionPrefab = default;
+    GameObject explosionPrefab = default;
     [SerializeField, Range(0, 1)]
-    private float stopSpeed = 1;
+    float stopSpeed = 1;
 
     public float size { get; set; }
-    private Coroutine mergingRoutine;
+    Coroutine mergingRoutine;
 
-    private new Rigidbody2D rigidbody => GetComponent<Rigidbody2D>();
+    new Rigidbody2D rigidbody => GetComponent<Rigidbody2D>();
 
     public TeamColor teamColor => TeamColor.Nobody;
 
@@ -35,14 +33,14 @@ public class Asteroid : MonoBehaviour, IDamageable {
     public void TakeDamage(float value) {
         Explode();
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision) {
         var planet = collision.gameObject.GetComponentInParent<Planet>();
         if (planet) {
             mergingRoutine = StartCoroutine(MergeWithPlanetRoutine(planet));
             return;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision) {
+    void OnCollisionExit2D(Collision2D collision) {
         var planet = collision.gameObject.GetComponentInParent<Planet>();
         if (planet && mergingRoutine != null) {
             StopCoroutine(mergingRoutine);

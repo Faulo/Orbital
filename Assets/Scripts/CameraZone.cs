@@ -4,9 +4,9 @@ using UnityEngine;
 public class CameraZone : MonoBehaviour {
     public GameObject indicatorPrefab;
 
-    private Dictionary<PlayerController, PlayerIndicator> currentIndicators = new Dictionary<PlayerController, PlayerIndicator>();
+    Dictionary<PlayerController, PlayerIndicator> currentIndicators = new Dictionary<PlayerController, PlayerIndicator>();
 
-    private void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit2D(Collider2D other) {
         var player = other.GetComponent<PlayerController>();
         if (player && player.isAlive && !currentIndicators.ContainsKey(player)) {
             currentIndicators[player] = Instantiate(indicatorPrefab).GetComponent<PlayerIndicator>();
@@ -14,7 +14,7 @@ public class CameraZone : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other) {
         var player = other.GetComponent<PlayerController>();
         if (player && currentIndicators.ContainsKey(player)) {
             Destroy(currentIndicators[player].gameObject);

@@ -1,6 +1,4 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,18 +22,19 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] mapPresets;
 
-    private GameObject mapParent;
-    private Planet[] planets;
-    
+    GameObject mapParent;
+    Planet[] planets;
 
-    private void Awake() {
-        if (!instance)
+
+    void Awake() {
+        if (!instance) {
             instance = this;
-        else if (instance != this)
+        } else if (instance != this) {
             Destroy(this);
+        }
     }
 
-    private void Start() {
+    void Start() {
         mapParent = Instantiate(mapPresets[Random.Range(0, mapPresets.Length)], Vector3.zero, Quaternion.identity);
         planets = mapParent.GetComponentsInChildren<Planet>();
 
