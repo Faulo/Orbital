@@ -1,24 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
-    private Image barTeamYellow => GameManager.instance.GetTeam(TeamColor.Yellow).scoreBar;
-    private Image barTeamGreen => GameManager.instance.GetTeam(TeamColor.Green).scoreBar;
+    Image barTeamYellow => GameManager.instance.GetTeam(TeamColor.Yellow).scoreBar;
+    Image barTeamGreen => GameManager.instance.GetTeam(TeamColor.Green).scoreBar;
 
     // Parameters for balancing
     [SerializeField, Range(1, 100000)]
-    private int pointsToWin = 100;
+    int pointsToWin = 100;
 
     // Variables
-    private float pointsTeamYellow; // Team Index: 1
-    private float pointsTeamGreen; // Team Index: 2
+    float pointsTeamYellow; // Team Index: 1
+    float pointsTeamGreen; // Team Index: 2
 
-    private float fillPerPoint;
+    float fillPerPoint;
 
     [SerializeField, Range(0, 1)]
-    private float fillSpeed = 1f;
+    float fillSpeed = 1f;
 
     public void Init(GameObject mapParent) {
         pointsTeamYellow = 0;
@@ -30,16 +29,16 @@ public class ScoreManager : MonoBehaviour {
 
         InvokeRepeating("UpdateScore", 1.0f, 1.0f);
     }
-    private void Start() {
-        
+    void Start() {
+
     }
-    private void Update() {
+    void Update() {
         barTeamYellow.fillAmount = Mathf.Lerp(barTeamYellow.fillAmount, pointsTeamYellow * fillPerPoint, fillSpeed);
         barTeamGreen.fillAmount = Mathf.Lerp(barTeamGreen.fillAmount, pointsTeamGreen * fillPerPoint, fillSpeed);
     }
 
 
-    private void UpdateScore() {
+    void UpdateScore() {
         var capturables = FindObjectsOfType<GameObject>()
             .SelectMany(obj => obj.GetComponents<ICapturable>());
         foreach (var capturable in capturables) {
@@ -52,9 +51,12 @@ public class ScoreManager : MonoBehaviour {
                     break;
             }
         }
-        if (pointsTeamYellow >= pointsToWin)
+        if (pointsTeamYellow >= pointsToWin) {
             GetComponent<GameManager>().GameOver(TeamColor.Yellow);
-        if (pointsTeamGreen >= pointsToWin)
+        }
+
+        if (pointsTeamGreen >= pointsToWin) {
             GetComponent<GameManager>().GameOver(TeamColor.Green);
+        }
     }
 }

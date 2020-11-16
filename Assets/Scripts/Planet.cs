@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 public class Planet : MonoBehaviour, ICapturable {
     [SerializeField]
-    private Sprite nobodyOrbit = default;
+    Sprite nobodyOrbit = default;
     [SerializeField]
-    private Sprite yellowOrbit = default;
+    Sprite yellowOrbit = default;
     [SerializeField]
-    private Sprite greenOrbit = default;
+    Sprite greenOrbit = default;
 
     [SerializeField, Range(0, 20)]
     public float coreRadius = 0;
@@ -22,7 +18,7 @@ public class Planet : MonoBehaviour, ICapturable {
     [SerializeField, Range(0, 10000)]
     public float coreDensity = 0;
     [SerializeField]
-    private AnimationCurve worthOverMass = default;
+    AnimationCurve worthOverMass = default;
 
     public float coreMass {
         get => coreRadius * coreDensity;
@@ -56,14 +52,14 @@ public class Planet : MonoBehaviour, ICapturable {
         gravityRadius += size / 10;
     }
 
-    private TeamColor belongsToCache;
+    TeamColor belongsToCache;
 
     public float worth => worthOverMass.Evaluate(coreMass);
 
-    private Core core;
-    private Atmosphere atmosphere;
-    private Gravity gravity;
-    private ScoreParticles particles;
+    Core core;
+    Atmosphere atmosphere;
+    Gravity gravity;
+    ScoreParticles particles;
 
     void Start() {
         core = GetComponentInChildren<Core>();

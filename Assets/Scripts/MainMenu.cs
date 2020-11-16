@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
+﻿using System;
 using System.Collections;
-using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
     public GameObject menuParent;
@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject optionsButton;
     public Text[] creditsText;
 
-    private string[] names = new string[6]
+    string[] names = new string[6]
     {
         "Carl-Philipp Hellmuth",
         "Michael Hochmuth",
@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour {
         "Ilona Treml"
     };
 
-    private int numberOfPlayers => playerSlider.value == 0 ? 2 : 4;
+    int numberOfPlayers => playerSlider.value == 0 ? 2 : 4;
 
     void Start() {
         EventSystem.current.SetSelectedGameObject(null);
@@ -89,7 +89,7 @@ public class MainMenu : MonoBehaviour {
     public void SetNumberOfPlayers() {
     }
 
-    private void Shuffle(string[] texts) {
+    void Shuffle(string[] texts) {
         for (int t = 0; t < texts.Length; t++) {
             string tmp = texts[t];
             int r = UnityEngine.Random.Range(t, texts.Length);

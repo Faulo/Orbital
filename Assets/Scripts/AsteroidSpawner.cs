@@ -1,21 +1,20 @@
-﻿using Slothsoft.UnityExtensions;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour {
     [SerializeField]
-    private GameObject[] asteroidPrefabs = default;
+    GameObject[] asteroidPrefabs = default;
     [SerializeField, Range(0, 10)]
-    private float asteroidInterval = 1;
+    float asteroidInterval = 1;
     [SerializeField, Range(0, 10)]
-    private float asteroidLaunchSpeed = 1;
+    float asteroidLaunchSpeed = 1;
     [SerializeField]
-    private AnimationCurve asteroidSizeDistribution = default;
+    AnimationCurve asteroidSizeDistribution = default;
 
-    private float asteroidTimer;
+    float asteroidTimer;
 
-    private IEnumerable<BoxCollider2D> boxes;
+    IEnumerable<BoxCollider2D> boxes;
 
     // Start is called before the first frame update
     void Start() {
@@ -34,15 +33,15 @@ public class AsteroidSpawner : MonoBehaviour {
         }
     }
 
-    private void Spawn() {
+    void Spawn() {
         var asteroid = Instantiate(asteroidPrefabs.RandomElement(), RandomPosition(), Quaternion.identity).GetComponent<Asteroid>();
         asteroid.size = RandomSize();
         asteroid.LaunchTowards(Vector3.zero, asteroidLaunchSpeed);
     }
-    private float RandomSize() {
+    float RandomSize() {
         return asteroidSizeDistribution.Evaluate(Random.value);
     }
-    private Vector3 RandomPosition() {
+    Vector3 RandomPosition() {
         var rect = boxes.RandomElement().bounds;
         return new Vector3(
             Random.Range(rect.min.x, rect.max.x),
