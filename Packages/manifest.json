@@ -1,10 +1,9 @@
 {
   "dependencies": {
     "com.unity.ide.visualstudio": "1.0.11",
-    "com.unity.package-manager-ui": "2.2.0",
-    "net.slothsoft.unity-extensions": "https://github.com/Faulo/UnityExtensions.git",
+    "com.unity.textmeshpro": "2.1.3",
     "com.unity.ugui": "1.0.0",
-    "com.unity.textmeshpro": "2.0.1",
+    "net.slothsoft.unity-extensions": "https://github.com/Faulo/UnityExtensions.git#0.1.17",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -36,11 +35,5 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "lock": {
-    "net.slothsoft.unity-extensions": {
-      "hash": "8be094b26dd9363ca8b5945cbeaadc11e203c25f",
-      "revision": "HEAD"
-    }
   }
 }
