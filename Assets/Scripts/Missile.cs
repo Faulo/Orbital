@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Missile : MonoBehaviour {
-    private float size => rigidbody.mass;
+    float size => rigidbody.mass;
 
     [SerializeField]
-    private GameObject explosionPrefab = default;
+    GameObject explosionPrefab = default;
 
     public TeamColor teamColor;
     public Sprite sprite {
@@ -17,8 +14,8 @@ public class Missile : MonoBehaviour {
             GetComponentInChildren<SpriteRenderer>().sprite = value;
         }
     }
-    private new Rigidbody2D rigidbody => GetComponent<Rigidbody2D>();
-    private Vector3 velocity = default;
+    new Rigidbody2D rigidbody => GetComponent<Rigidbody2D>();
+    Vector3 velocity = default;
     public void AddVelocity(Vector2 velocity) {
         this.velocity += new Vector3(velocity.x, velocity.y, 0);
         //rigidbody.AddForce(velocity, ForceMode2D.Impulse);
@@ -26,7 +23,7 @@ public class Missile : MonoBehaviour {
     public void AddVelocity(Vector3 velocity) {
         this.velocity += velocity;
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision) {
         if (collision.rigidbody) {
             collision.rigidbody.AddForce(transform.up * rigidbody.mass, ForceMode2D.Impulse);
             var damageables = collision.rigidbody
@@ -44,7 +41,7 @@ public class Missile : MonoBehaviour {
             }
         }
     }
-    private void FixedUpdate() {
+    void FixedUpdate() {
         transform.Translate(velocity * Time.fixedDeltaTime, Space.World);
     }
     public void Explode() {

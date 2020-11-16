@@ -1,24 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 
 public class Atmosphere : MonoBehaviour {
 
     [SerializeField]
-    private AnimationCurve dragOverDistance = default;
+    AnimationCurve dragOverDistance = default;
     [SerializeField, Range(0, 2)]
-    private float maxDrag = 0;
+    float maxDrag = 0;
 
     public new ParticleSystem particleSystem => GetComponent<ParticleSystem>();
     public new CircleCollider2D collider => GetComponent<CircleCollider2D>();
     public new SpriteRenderer renderer => GetComponent<SpriteRenderer>();
 
-    private Planet planet;
+    Planet planet;
 
     [SerializeField]
-    private GameObject linePrefab = default;
+    GameObject linePrefab = default;
     public CaptureSection[] lines;
 
     void Start() {
@@ -50,7 +48,7 @@ public class Atmosphere : MonoBehaviour {
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) {
+    void OnTriggerStay2D(Collider2D collision) {
         //Debug.Log(collision.name);
         if (collision.attachedRigidbody) {
             var todo = Vector3.zero;
@@ -68,7 +66,7 @@ public class Atmosphere : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision) {
+    void OnTriggerExit2D(Collider2D collision) {
         if (collision.attachedRigidbody) {
             collision.attachedRigidbody.drag = 0;
         }

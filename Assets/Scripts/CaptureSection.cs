@@ -1,7 +1,4 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CaptureSection : MonoBehaviour, ICapturable {
     public Color color {
@@ -30,11 +27,11 @@ public class CaptureSection : MonoBehaviour, ICapturable {
             }
         }
     }
-    private TeamColor belongsToCache;
+    TeamColor belongsToCache;
     public float worth { get; set; }
 
-    private LineRenderer line;
-    private ScoreParticles particles;
+    LineRenderer line;
+    ScoreParticles particles;
 
     // Start is called before the first frame update
     void Awake() {
